@@ -9,7 +9,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}.  wwwww
+<P>  The time on the server is ${serverTime}.  된거다~안된거다?
 I modified it it </P>
 </body>
 </html>
