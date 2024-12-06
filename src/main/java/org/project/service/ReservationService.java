@@ -2,10 +2,14 @@ package org.project.service;
 
 import org.springframework.stereotype.Service;
 
+
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.project.dto.ReservationDTO;
+import org.project.dto.MechanicDTO;
 import org.project.mapper.ReservationMapper;
 
 
@@ -13,8 +17,11 @@ import org.project.mapper.ReservationMapper;
 @Service
 public class ReservationService {
 
-	 private final ReservationMapper reservationMapper;
+	    @Autowired
+	    private final ReservationMapper reservationMapper;
 
+	   
+	    
 	    @Autowired
 	    public ReservationService(ReservationMapper reservationMapper) {
 	        this.reservationMapper = reservationMapper;
@@ -24,9 +31,15 @@ public class ReservationService {
 	        reservationMapper.insertReservation(reservationDTO);
 	    }
 	    
+	    
+	    
 	    public List<String> getAvailableTimesForDate(String date) {
 	        // Mock example. Replace with actual database query.
 	        return List.of("09:00", "10:00", "11:00", "12:00", "13:00", 
 	        		"14:00", "15:00","16:00", "17:00", "18:00", "19:00");
+	    }
+	    // 예약과 해당 기사의 정보 조회
+	    public List<ReservationDTO> getAllReservationsWithMechanics() {
+	        return reservationMapper.selectAllReservationsWithMechanics();
 	    }
 }

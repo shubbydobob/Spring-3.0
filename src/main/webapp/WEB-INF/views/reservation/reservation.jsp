@@ -9,20 +9,19 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/resources/js/reservation.js"></script>
 <script src="/resources/js/address.js"></script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<form method="post" action="/reservation">
+<form method="post" action="/reservation/reservation">
        <div>
         <label for="name">성 함</label>
-        <input type="text" name="name"><br />
+        <input type="text" name="customer_name"><br />
     </div>
     <div>
         <label for="phone">연락처</label>
-        <input type="text" name="phone"><br />
+        <input type="text" name="customer_phone"><br />
     </div>
     <div>
         <label for="address_postcode">주 소</label><br />
@@ -35,13 +34,21 @@
     <div>
         <label for="problem">A/S 사유를 선택해주세요.</label><br />
         <select name="problem">
-            <option>전원 안켜짐</option>
-            <option>온도 조절 불량</option>
+            <option>냉난방 불량</option>
+            <option>소음 및 진동</option>
             <option>누수</option>
             <option>부품 파손</option>
-            <option>성에 제거</option>
+            <option>악취 발생</option>
         </select><br />
     </div>
+    
+        <select name="mechanic_id">
+        <option value="1">Mechanic 1</option>
+        <option value="2">Mechanic 2</option>
+        <option value="3">Mechanic 3</option>
+    </select>
+ 
+    
   <div>
             <label for="date">예약 날짜:</label>
             <input type="text" id="calendar" name="date" placeholder="날짜를 선택하세요">
