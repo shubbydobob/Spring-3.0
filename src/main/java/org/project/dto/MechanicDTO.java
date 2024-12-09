@@ -8,14 +8,7 @@ public class MechanicDTO {
     private String name;
     private String phone;
     private String expertise;
-    private Timestamp createdAt;
     
-    // Constructor with parameters
-    public MechanicDTO(String name, String phone, String expertise) {
-        this.name = name;
-        this.phone = phone;
-        this.expertise = expertise;
-    }
     
 	public int getNo() {
 		return no;
@@ -41,17 +34,12 @@ public class MechanicDTO {
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
 	}
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
+
 	@Override
 	public String toString() {
-		return "MechanicDTO [no=" + no + ", name=" + name + ", phone=" + phone + ", expertise=" + expertise
-				+ ", createdAt=" + createdAt + "]";
+		return "MechanicDTO [no=" + no + ", name=" + name + ", phone=" + phone + ", expertise=" + expertise + "]";
 	}
-    
+	
+	
     
 }

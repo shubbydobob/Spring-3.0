@@ -3,17 +3,22 @@
         flatpickr("#calendar", {
             onChange: function(selectedDates, dateStr) {
                 if (dateStr) {
-                    fetchAvailableTimes(dateStr);
+                const mechanic = getSelectedMechanic();
+                if (!mechanic) {
+            alert("먼저 수리기사를 선택해주세요.");
+            return; // Stop further execution if mechanic is not selected
+        }
+                    fetchAvailableTimes(mechanic, dateStr);
                 }
             }
         });
 
         // Fetch available times via AJAX
-        function fetchAvailableTimes(date) {
+        function fetchAvailableTimes(mechanic, date) {
             $.ajax({
                 url: "/reservation/available-times",
                 type: "GET",
-                data: { date: date },
+                data: { mechanic: mechanic, date: date  },
                 success: function(times) {
                     populateTimesTable(times);
                 },
@@ -30,7 +35,7 @@
 
             times.forEach(time => {
                 const row = `<tr>
-                    <td>${time}</td>
+                    <td><input type="text" value="${time}" redaonly></td>
                     <td><button type="button" onclick="selectTime('${time}')">선택</button></td>
                 </tr>`;
                 tableBody.append(row);
@@ -45,7 +50,14 @@
             $("#selected-time").val(time);
            
         }
+        function getSelectedMechanic() {
+    // This should return the mechanicId based on the selection or your logic
+    const mechanic = document.getElementById("mechanic").value; // mechanic-select is the id of the select element
+    return mechanic; // mechanicId is a string
+console.log("Selected mechanic: " + mechanic);
+}
           // Handle form submission
+          
     $("form").on("submit", function (event) {
         const selectedTime = $("#selected-time").val();
 
@@ -63,3 +75,4 @@
         return true;
     });
     });
+    

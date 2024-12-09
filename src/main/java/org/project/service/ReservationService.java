@@ -2,14 +2,13 @@ package org.project.service;
 
 import org.springframework.stereotype.Service;
 
-
-
-
+import java.sql.Date;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.project.dto.ReservationDTO;
-import org.project.dto.MechanicDTO;
 import org.project.mapper.ReservationMapper;
 
 
@@ -17,29 +16,44 @@ import org.project.mapper.ReservationMapper;
 @Service
 public class ReservationService {
 
-	    @Autowired
-	    private final ReservationMapper reservationMapper;
-
-	   
 	    
+	    private final ReservationMapper reservationMapper;
+	   
 	    @Autowired
 	    public ReservationService(ReservationMapper reservationMapper) {
-	        this.reservationMapper = reservationMapper;
+	    
+	    	this.reservationMapper = reservationMapper;
 	    }
 
-	    public void saveReservation(ReservationDTO reservationDTO) {
-	        reservationMapper.insertReservation(reservationDTO);
-	    }
-	    
-	    
-	    
-	    public List<String> getAvailableTimesForDate(String date) {
-	        // Mock example. Replace with actual database query.
-	        return List.of("09:00", "10:00", "11:00", "12:00", "13:00", 
-	        		"14:00", "15:00","16:00", "17:00", "18:00", "19:00");
-	    }
-	    // 예약과 해당 기사의 정보 조회
-	    public List<ReservationDTO> getAllReservationsWithMechanics() {
-	        return reservationMapper.selectAllReservationsWithMechanics();
-	    }
-}
+
+
+		 
+		    public boolean isTimeSlotAvailable(String reservation_date, String reservation_time) {
+		       
+		        List<ReservationDTO> existingReservations = reservationMapper.findByReservationDateAndReservationTime(reservation_date, reservation_time);
+		        return existingReservations.isEmpty(); 
+		    }
+		    
+		    public void saveReservation(ReservationDTO reservationDTO) {
+		        reservationMapper.insertReservation(reservationDTO);
+		    }
+		    
+		    
+		    public List<String> getAvailableTimesForMechanic(String mechanic, String date) {
+		
+		    	return reservationMapper.getAvailableTimesForMechanic(mechanic, date);
+		    }
+		  
+		    public List<ReservationDTO> getReservation() {
+		        return reservationMapper.selectReservation();
+		    }
+		    
+		  
+		    public ReservationDTO getReservationByCustomerInfo
+		    (String customer_name, String customer_phone, 
+		     String address_postcode, String address_road, 
+		     String address_bname, String address_detail, String reservation_date) {
+		        return reservationMapper.selectReservationByCustomerInfo
+		     (customer_name, customer_phone, address_postcode, address_road, address_bname, address_detail, reservation_date);
+		    }
+	}

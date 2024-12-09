@@ -1,0 +1,51 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: auto;
+    width: 650px;
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* 배경 그라데이션 */
+}
+
+h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.layer {
+    background-color: white;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 항목 간 간격 */
+}
+
+.reservation-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    
+}
+
+.reservation-item div {
+    font-size: 16px;
+}
+
+.reservation-item .title {
+    font-weight: bold;
+    color: black;
+    flex-basis: 30%; /* 제목의 넓이 */
+}
+
+.reservation-item .content {
+    color: #333;
+    flex-basis: 70%; /* 내용의 넓이 */
+}

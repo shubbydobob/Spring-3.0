@@ -1,12 +1,12 @@
 package org.project.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
-
-import org.project.dto.MechanicDTO;
 import org.project.dto.ReservationDTO;
 import org.project.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,50 +20,97 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/reservation")
 public class ReservationController {
-	 @Autowired
+	
+	@Autowired
 	   private ReservationService reservationService;
 	 
+	
+	 @GetMapping("/")
+	    public String showMainPage() {
+	        return "main/main"; // main.jsp 寃쎈줈
+	    }
 	 
-
-//	 @Autowired
-//	    public ReservationController(ReservationService reservationService) {
-//	        this.reservationService = reservationService;
-//	    }
 	 
 	 @GetMapping("/reservation")
 	    public String showReservationPage() {
-	        return "reservation/reservation"; // JSP 파일 경로
-	    }
-  
+	        return "reservation/reservation"; 
+	    }  
   @GetMapping("/available-times")
   @ResponseBody
-  public List<String> getAvailableTimes(@RequestParam String date) {
+  public ResponseEntity getAvailableTimesForMechanic(@RequestParam String mechanic, @RequestParam String date) {
+	  List<String> availableTimesForMechanic = reservationService.getAvailableTimesForMechanic(mechanic, date);
       // Call the service to get available times for the given date
-      return reservationService.getAvailableTimesForDate(date);
-  }
-
-  // POST 요청 핸들러
-  @PostMapping("/reservation")
-  public String makeReservation(@ModelAttribute ReservationDTO reservation, Model model) {
-      try {
-          // 예약 정보 저장
-          reservationService.saveReservation(reservation);
-
-          // 성공 시 예약 확인 페이지로 리다이렉트
-          return "redirect:/reservation/reservation-check";
-      } catch (Exception e) {
-          e.printStackTrace();
-          model.addAttribute("error", "예약 처리 중 문제가 발생했습니다.");
-          return "reservation/reservation-fail"; // 실패 시 폼으로 이동
-      }
+      return ResponseEntity.ok(availableTimesForMechanic);
   }
 
   
-  @GetMapping("/reservation-check")
+      
+  @PostMapping("/reservation_check")
+  public String makeReservation(ReservationDTO reservation, RedirectAttributes redirectAttributes) {
+	  System.out.println("reservation : " + "예약 실패" + reservation);
+	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    String formattedDate = dateFormat.format(reservation.getReservation_date());
+	  boolean isAvailable = reservationService.isTimeSlotAvailable(formattedDate, reservation.getReservation_time());
+      
+      if (!isAvailable) {
+          redirectAttributes.addFlashAttribute("errorMessage", "예약 실패했습니다..");
+          return "redirect:/reservation/reservation"; 
+      }    
+	  
+	  reservationService.saveReservation(reservation);
+
+          redirectAttributes.addFlashAttribute("successMessage", "예약 신청이 되었습니다!");
+          redirectAttributes.addFlashAttribute("reservation", reservation);
+          System.out.println("reservation : " + reservation);
+          return "redirect:/reservation/reservation_check";
+      }
+
+  
+  @GetMapping("/reservation_check")
   public String showReservationCheckPage(Model model) {
-      // 예약 정보를 가져오는 서비스 호출
-      List<ReservationDTO> reservations = reservationService.getAllReservationsWithMechanics(); // 예약과 기사 정보
+      
+      if (model.containsAttribute("reservation")) {
+          model.addAttribute("reservation", model.asMap().get("reservation"));
+      } else {
+          
+          model.addAttribute("reservation", new ReservationDTO());
+      }
+
+     
+      List<ReservationDTO> reservations = reservationService.getReservation();
       model.addAttribute("reservations", reservations);
-      return "/reservation/reservation-check";  // reservation-check.jsp로 이동
+      System.out.println("reservation : " + reservations);
+      return "reservation/reservation_check";  
+  }
+  
+//  @PostMapping("/reservation_info_check")
+//  public String confirmReservation(@ModelAttribute ReservationDTO reservation, RedirectAttributes redirectAttributes) {
+//     
+//      if (reservation.getCustomer_name() == null || reservation.getCustomer_phone() == null || 
+//    		  reservation.getAddress_postcode() == null || reservation.getAddress_road() == null ||
+//    		  reservation.getAddress_bname() == null || reservation.getAddress_detail() == null ||
+//              reservation.getReservation_date() == null){
+//          redirectAttributes.addFlashAttribute("errorMessage", "紐⑤뱺 �븘�뱶瑜� �엯�젰�빐二쇱꽭�슂.");
+//          return "redirect:/reservation/reservation_info_check";
+//      }
+//
+//    
+//      reservationService.saveReservation(reservation);
+//
+//     
+//      redirectAttributes.addFlashAttribute("successMessage", "�삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎!");
+//      redirectAttributes.addFlashAttribute("confirmedReservation", reservation);
+//
+//      return "redirect:/reservation/reservation_check"; 
+//  }
+//  
+  @GetMapping("/reservation_info_check")
+  public String showReservationInfoPage(Model model) {
+      // Add the necessary attributes to the model for displaying reservation info
+      List<ReservationDTO> reservations = reservationService.getReservation();
+      model.addAttribute("reservations", reservations);
+      return "reservation/reservation_info_check";  // Corresponding JSP or HTML page
   }
 }
+
+

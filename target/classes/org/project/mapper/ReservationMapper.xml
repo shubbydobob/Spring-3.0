@@ -3,30 +3,50 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.project.mapper.ReservationMapper">
+
  <insert id="insertReservation" parameterType="org.project.dto.ReservationDTO">
-        INSERT INTO reservation (customer_name, customer_phone, address_postcode, address_road, address_bname, address_detail, problem, date, time, mechanic_id)
-        VALUES (#{customer_name}, #{customer_phone}, #{address_postcode}, #{address_road}, #{address_bname}, #{address_detail}, #{problem}, #{date}, #{time}, #{mechanic_id})
+       
+        
+        INSERT INTO reservation 
+        (customer_name, customer_phone, address_postcode, address_road, 
+        address_bname, address_detail, problem, mechanic, reservation_date, reservation_time)
+        VALUES 
+        (#{customer_name}, #{customer_phone}, #{address_postcode}, #{address_road}, 
+        #{address_bname}, #{address_detail}, #{problem}, #{mechanic}, #{reservation_date}, #{reservation_time})
+        
     </insert>
- <select id="selectAllReservationsWithMechanics" resultType="org.project.dto.ReservationDTO">
-    SELECT 
-    r.no AS reservation_no,
-    r.customer_name,
-    r.customer_phone,
-    r.address_postcode,
-    r.address_road,
-    r.address_bname,
-    r.address_detail,
-    r.problem,
-    r.date AS reservation_date,
-    r.time AS reservation_time,
-    m.no AS mechanic_no,
-    m.name AS mechanic_name,
-    m.phone AS mechanic_phone,
-    m.expertise AS mechanic_expertise,
-    m.created_at AS mechanic_created_at
-FROM 
-    reservation r
-LEFT JOIN 
-    mechanic m ON r.mechanic_id = m.no;
+     <select id="getAvailableTimesForMechanic" resultType="String">
+        SELECT available_time 
+        FROM mechanic_schedule
+        WHERE mechanic = #{mechanic} 
+          AND available_date = #{date} 
+          AND is_reserved = FALSE
     </select>
+    
+    
+     <select id="findByReservationDateAndReservationTime" resultType="org.project.dto.ReservationDTO">
+        SELECT * FROM reservation
+        WHERE reservation_date = #{reservation_date}
+        AND reservation_time = #{reservation_time}
+        
+    </select>
+    
+    
+ <select id="selectReservation" resultType="org.project.dto.ReservationDTO">
+   select * from reservation;
+    </select>
+    
+    <!--  
+    <select id="selectReservationByCustomerInfo" resultType="org.project.dto.ReservationDTO">
+    SELECT * FROM reservation
+    WHERE customer_name = #{customer_name} 
+    AND customer_phone = #{customer_phone} 
+    AND address_postcode = #{address_postcode} 
+    AND address_road = #{address_road} 
+    AND address_bname = #{address_bname} 
+    AND address_detail = #{address_detail}
+    AND reservation_date = #{reservation_date}
+</select>
+    -->
+    
 </mapper>
