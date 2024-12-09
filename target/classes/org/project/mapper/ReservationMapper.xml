@@ -4,6 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.project.mapper.ReservationMapper">
 
+ <select id="findReservationByCustomerInfo" resultType="org.project.dto.ReservationDTO">
+    SELECT * FROM reservation
+    WHERE customer_name = #{customer_name} 
+    AND customer_phone = #{customer_phone} 
+    AND address_postcode = #{address_postcode} 
+    AND address_road = #{address_road} 
+    AND address_bname = #{address_bname} 
+    AND address_detail = #{address_detail}
+  
+</select>
+
  <insert id="insertReservation" parameterType="org.project.dto.ReservationDTO">
        
         
@@ -26,9 +37,8 @@
     
      <select id="findByReservationDateAndReservationTime" resultType="org.project.dto.ReservationDTO">
         SELECT * FROM reservation
-        WHERE reservation_date = #{reservation_date}
+        WHERE customer_name = #{reservation_date}
         AND reservation_time = #{reservation_time}
-        
     </select>
     
     
@@ -36,17 +46,8 @@
    select * from reservation;
     </select>
     
-    <!--  
-    <select id="selectReservationByCustomerInfo" resultType="org.project.dto.ReservationDTO">
-    SELECT * FROM reservation
-    WHERE customer_name = #{customer_name} 
-    AND customer_phone = #{customer_phone} 
-    AND address_postcode = #{address_postcode} 
-    AND address_road = #{address_road} 
-    AND address_bname = #{address_bname} 
-    AND address_detail = #{address_detail}
-    AND reservation_date = #{reservation_date}
-</select>
-    -->
+   
+   
+
     
 </mapper>

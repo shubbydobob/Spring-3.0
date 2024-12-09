@@ -30,11 +30,59 @@ public class ReservationController {
 	        return "main/main"; // main.jsp 寃쎈줈
 	    }
 	 
+	 @GetMapping("/reservation_info_check")
+	  public String getReservationByCustomerInfo(
+	          @RequestParam(value = "customer_name", required = false) String customer_name,
+	          @RequestParam(value = "customer_phone", required = false) String customer_phone,
+	          @RequestParam(value = "address_postcode", required = false) String address_postcode,
+	          @RequestParam(value = "address_road", required = false) String address_road,
+	          @RequestParam(value = "address_bname", required = false) String address_bname,
+	          @RequestParam(value = "address_detail", required = false) String address_detail,
+	          Model model){
+		  System.out.println("customer_name: " + customer_name);
+		  System.out.println("customer_phone: " + customer_phone);
+		  // 고객 정보로 예약을 조회
+	        List<ReservationDTO> reservations = reservationService.findReservationByCustomerInfo(
+	                customer_name, customer_phone, address_postcode,
+	                address_road, address_bname, address_detail);
+
+	        // 예약 정보를 model에 추가해서 예약 정보 페이지로 전달
+	        model.addAttribute("reservations", reservations);
+
+	        return "reservation/reservation_info_check"; // 예약 정보 페이지로 이동
+	    }
+	 
+	 @PostMapping("/reservation_info_check")
+	 public String submitReservationInfo(
+	         @RequestParam(value = "customer_name", required = false) String customer_name,
+	         @RequestParam(value = "customer_phone", required = false) String customer_phone,
+	         @RequestParam(value = "address_postcode", required = false) String address_postcode,
+	         @RequestParam(value = "address_road", required = false) String address_road,
+	         @RequestParam(value = "address_bname", required = false) String address_bname,
+	         @RequestParam(value = "address_detail", required = false) String address_detail,
+	         RedirectAttributes redirectAttributes) {
+
+	     // Print out the submitted data for debugging
+	     System.out.println("customer_name: " + customer_name);
+	     System.out.println("customer_phone: " + customer_phone);
+	     
+	     // Retrieve reservation information based on the provided customer details
+	     List<ReservationDTO> reservations = reservationService.findReservationByCustomerInfo(
+	             customer_name, customer_phone, address_postcode,
+	             address_road, address_bname, address_detail);
+
+	     // Add the reservation data to the model (using RedirectAttributes to persist data across redirects)
+	     redirectAttributes.addFlashAttribute("reservations", reservations);
+
+	     // Redirect to reservation info check page
+	     return "redirect:/reservation/reservation_info_check";
+	 }
 	 
 	 @GetMapping("/reservation")
 	    public String showReservationPage() {
 	        return "reservation/reservation"; 
-	    }  
+	    } 
+	 
   @GetMapping("/available-times")
   @ResponseBody
   public ResponseEntity getAvailableTimesForMechanic(@RequestParam String mechanic, @RequestParam String date) {
@@ -47,7 +95,7 @@ public class ReservationController {
       
   @PostMapping("/reservation_check")
   public String makeReservation(ReservationDTO reservation, RedirectAttributes redirectAttributes) {
-	  System.out.println("reservation : " + "예약 실패" + reservation);
+	  
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	    String formattedDate = dateFormat.format(reservation.getReservation_date());
 	  boolean isAvailable = reservationService.isTimeSlotAvailable(formattedDate, reservation.getReservation_time());
@@ -61,7 +109,7 @@ public class ReservationController {
 
           redirectAttributes.addFlashAttribute("successMessage", "예약 신청이 되었습니다!");
           redirectAttributes.addFlashAttribute("reservation", reservation);
-          System.out.println("reservation : " + reservation);
+         
           return "redirect:/reservation/reservation_check";
       }
 
@@ -79,38 +127,13 @@ public class ReservationController {
      
       List<ReservationDTO> reservations = reservationService.getReservation();
       model.addAttribute("reservations", reservations);
-      System.out.println("reservation : " + reservations);
+      
       return "reservation/reservation_check";  
   }
   
-//  @PostMapping("/reservation_info_check")
-//  public String confirmReservation(@ModelAttribute ReservationDTO reservation, RedirectAttributes redirectAttributes) {
-//     
-//      if (reservation.getCustomer_name() == null || reservation.getCustomer_phone() == null || 
-//    		  reservation.getAddress_postcode() == null || reservation.getAddress_road() == null ||
-//    		  reservation.getAddress_bname() == null || reservation.getAddress_detail() == null ||
-//              reservation.getReservation_date() == null){
-//          redirectAttributes.addFlashAttribute("errorMessage", "紐⑤뱺 �븘�뱶瑜� �엯�젰�빐二쇱꽭�슂.");
-//          return "redirect:/reservation/reservation_info_check";
-//      }
-//
-//    
-//      reservationService.saveReservation(reservation);
-//
-//     
-//      redirectAttributes.addFlashAttribute("successMessage", "�삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎!");
-//      redirectAttributes.addFlashAttribute("confirmedReservation", reservation);
-//
-//      return "redirect:/reservation/reservation_check"; 
-//  }
-//  
-  @GetMapping("/reservation_info_check")
-  public String showReservationInfoPage(Model model) {
-      // Add the necessary attributes to the model for displaying reservation info
-      List<ReservationDTO> reservations = reservationService.getReservation();
-      model.addAttribute("reservations", reservations);
-      return "reservation/reservation_info_check";  // Corresponding JSP or HTML page
-  }
+
+ 
 }
+
 
 

@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/reservation_info_check.css">
 <script src="/resources/js/address.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-   <h2>예약 정보를 입력해주세요</h2>
-    <form action="/reservation/reservation_check" method="post">
+
+   
+  
+    <form action="/reservation/reservation_info" method="post">
+    <h2>예약 정보를 입력해주세요</h2>
       <div class="form-group">
         <label for="name">성함</label>
         <input type="text" name="customer_name" id="customer_name" placeholder="이름을 입력하세요" required>
