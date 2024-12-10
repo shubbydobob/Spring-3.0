@@ -7,62 +7,73 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="layer">
-    <h2>예약 확인</h2>
 
+  
+  <div class="form-group">
+   
     <c:if test="${not empty successMessage}">
         <div>${successMessage}</div>
     </c:if>
-
-    <div class="reservations">
-        <c:forEach var="reservation" items="${reservations}">
-            <div class="reservation-item">
-                <div class="title">예약 번호</div>
-                <div class="content">${reservation.reservation_no}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">고객 이름</div>
-                <div class="content">${reservation.customer_name}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">고객 전화번호</div>
-                <div class="content">${reservation.customer_phone}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">우편번호</div>
-                <div class="content">${reservation.address_postcode}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">주소 (도로명)</div>
-                <div class="content">${reservation.address_road}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">주소 (주소)</div>
-                <div class="content">${reservation.address_bname}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">상세주소</div>
-                <div class="content">${reservation.address_detail}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">A/S 사유</div>
-                <div class="content">${reservation.problem}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">A/S 배정 기사</div>
-                <div class="content">${reservation.mechanic}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">예약 날짜</div>
-                <div class="content">${reservation.reservation_date}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">예약 시간</div>
-                <div class="content">${reservation.reservation_time}</div>
-            </div>
-        </c:forEach>
-    </div>
+    
+    <h3>예약 이력</h3>
+    
+    <c:forEach var="reservation" items="${reservations}">
+        <div>
+            <label>예약 번호</label>
+            <div>${reservation.reservation_no}</div>
+        </div>
+        
+        <div>
+            <label>이름</label>
+            <div>${reservation.customer_name}</div>
+        </div>
+        
+        <div>
+            <label>전화번호</label>
+            <div>${reservation.customer_phone}</div>
+        </div>
+        
+        <div>
+            <label>우편번호</label>
+            <div>${reservation.address_postcode}</div>
+        </div>
+        
+        <div>
+            <label>도로명 주소</label>
+            <div>${reservation.address_road}</div>
+        </div>
+        
+        <div>
+            <label>동주소</label>
+            <div>${reservation.address_bname}</div>
+        </div>
+        
+        <div>
+            <label>상세주소</label>
+            <div>${reservation.address_detail}</div>
+        </div>
+        
+        <div>
+            <label>A/S 사유</label>
+            <div>${reservation.problem}</div>
+        </div>
+        
+        <div>
+            <label>배정된 A/S 기사</label>
+            <div>${reservation.mechanic}</div>
+        </div>
+        
+        <div>
+            <label>방문 예정 날짜</label>
+            <div>${reservation.reservation_date}</div>
+        </div>
+        
+        <div>
+            <label>방문 예정 시간</label>
+            <div>${reservation.reservation_time}</div>
+        </div>
+           
+    </c:forEach>  
 </div>
-<a href="/reservation/">홈</a>
 </body>
 </html>

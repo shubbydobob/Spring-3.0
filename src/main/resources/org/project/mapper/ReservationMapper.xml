@@ -4,16 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.project.mapper.ReservationMapper">
 
- <select id="findReservationByCustomerInfo" resultType="org.project.dto.ReservationDTO">
+  <select id="findReservationByCustomerInfo" resultType="org.project.dto.ReservationDTO">
     SELECT * FROM reservation
     WHERE customer_name = #{customer_name} 
     AND customer_phone = #{customer_phone} 
-    AND address_postcode = #{address_postcode} 
-    AND address_road = #{address_road} 
-    AND address_bname = #{address_bname} 
-    AND address_detail = #{address_detail}
   
 </select>
+
+<select id="getReservationByNo" parameterType="int" resultType="org.project.dto.ReservationDTO">
+        SELECT * FROM reservation WHERE reservation_no = #{reservation_no}
+    </select>
 
  <insert id="insertReservation" parameterType="org.project.dto.ReservationDTO">
        
@@ -24,6 +24,9 @@
         VALUES 
         (#{customer_name}, #{customer_phone}, #{address_postcode}, #{address_road}, 
         #{address_bname}, #{address_detail}, #{problem}, #{mechanic}, #{reservation_date}, #{reservation_time})
+        
+        
+ 
         
     </insert>
      <select id="getAvailableTimesForMechanic" resultType="String">
