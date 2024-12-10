@@ -90,6 +90,8 @@ public class ReservationController {
 public ResponseEntity getAvailableTimesForMechanic(@RequestParam String mechanic, @RequestParam String date) {
 	  List<String> availableTimesForMechanic = reservationService.getAvailableTimesForMechanic(mechanic, date);
    // Call the service to get available times for the given date
+	  System.out.println("Available times for mechanic " + mechanic + " on " + date + ": " + availableTimesForMechanic);
+	  System.out.println("aaaaaa");
    return ResponseEntity.ok(availableTimesForMechanic);
 }
 

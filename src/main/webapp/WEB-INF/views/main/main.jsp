@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/main.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
 </head>
 <body>
    <main>
@@ -15,12 +16,22 @@
       </div>
       <header>
         <span>.Real Time-Book</span>
-        <menu>
-          <a href="/reservation/">홈</a>
-          <a href="/reservation/reservation">예약</a>
-          <a href="/reservation/reservation_info_check">예약조회</a>
-          <a href="">문의</a>
-        </menu>
+      <nav>
+          <ul>
+            <li>
+              <a href="/reservation/">Home</a>
+            </li>
+            <li>
+              <a href="/reservation/reservation">예  약</a>
+            </li>
+            <li>
+              <a href="/reservation/reservation_info_check">예약조회</a>
+            </li>
+            <li>
+              <a href="/chatbot/chatbot">문의</a>
+            </li>
+          </ul>
+        </nav>
       </header>
       <section class="hero">
         <div class="layer">

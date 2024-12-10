@@ -1,51 +1,110 @@
 @charset "UTF-8";
+/* 기본적인 스타일 */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: auto;
-    width: 650px;
-    background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* 배경 그라데이션 */
+    font-family: 'Arial', sans-serif;
+    background-color: #005807;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-h2 {
-    text-align: center;
-    color: black;
-    margin-bottom: 20px;
-}
-
-.layer {
-    background-color: white;
-    margin: 30px auto;
+/* 폼 컨테이너 */
+form {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.reservations {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* 항목 간 간격 */
+/* 각 input, select 스타일 */
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.reservation-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 10px 15px;
-    
-}
-
-.reservation-item div {
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #005807;
+    color: white;
+    border: none;
+    border-radius: 4px;
     font-size: 16px;
+    cursor: pointer;
 }
 
-.reservation-item .title {
-    font-weight: bold;
-    color: black;
-    flex-basis: 30%; /* 제목의 넓이 */
+input[type="submit"]:hover {
+    background-color: #000000;
 }
 
-.reservation-item .content {
+/* 라벨 스타일 */
+label {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* 주소 검색 버튼 */
+button.address_search {
+    padding: 10px;
+    background-color: #005807;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.address_search:hover {
+    background-color: #000000;
+}
+
+/* 예약 날짜 캘린더 */
+#calendar {
+    cursor: pointer;
+}
+
+/* 시간 선택 테이블 */
+#time-selection {
+    margin-top: 20px;
+}
+
+#time-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#time-table th, #time-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+#time-table th {
+    background-color: #f2f2f2;
     color: #333;
-    flex-basis: 70%; /* 내용의 넓이 */
 }
+
+#time-table td {
+    border: 1px solid #ddd;
+}
+
+#time-table td input {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#time-table td input:hover {
+    background-color: #45a049;
+}
+

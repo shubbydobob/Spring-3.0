@@ -2,6 +2,7 @@ package org.project.service;
 
 import org.springframework.stereotype.Service;
 
+
 import java.sql.Date;
 import java.util.List;
 
@@ -13,10 +14,12 @@ import org.project.mapper.ReservationMapper;
 
 
 
+
 @Service
 public class ReservationService {
 
-	    
+
+	
     private final ReservationMapper reservationMapper;
 	   
     @Autowired
@@ -48,10 +51,7 @@ public class ReservationService {
 	
 	    	return reservationMapper.getAvailableTimesForMechanic(mechanic, date);
 	    }
-	    public List<ReservationDTO> findByReservationDateAndReservationTime(String reservation_date, String reservation_time) {
-	        return reservationMapper.findByReservationDateAndReservationTime(reservation_date, reservation_time);
-	    }
-	    
+
 	    
 	  
 	    public List<ReservationDTO> getReservation() {

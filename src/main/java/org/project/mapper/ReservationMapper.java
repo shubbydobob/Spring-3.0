@@ -28,4 +28,6 @@ public interface ReservationMapper {
 	List<ReservationDTO> findByReservation(String reservation_date, String reservation_time);
 	
 	  List<ReservationDTO> findReservationByCustomerInfo(ReservationDTO rdto);
+	  
+	  
 }

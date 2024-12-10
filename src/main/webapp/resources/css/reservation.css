@@ -2,37 +2,77 @@
 /* 기본적인 스타일 */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #005807;
+    background-image: url(../img/col2.jpg); /* 이미지 경로 */
+    background-size: cover; /* 이미지가 화면 전체를 덮도록 설정 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    background-position: center center; /* 이미지 중앙 배치 */
     color: #333;
     margin: 0;
     padding: 0;
+    height: 100vh; /* 뷰포트 높이에 맞게 설정 */
+    width: 100vw; /* 뷰포트 너비에 맞게 설정 */
+    overflow: hidden; /* 스크롤 방지 */
 }
 
 /* 폼 컨테이너 */
 form {
-    width: 80%;
-    max-width: 600px;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%; 
+    max-width: 750px; /* 최대 폭 제한 */
+    margin: 150px auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 50px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* 각 input, select 스타일 */
-input[type="text"], select {
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 수직 정렬 맞춤 */
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.form-row .form-group:last-child {
+    margin-right: 0;
+}
+
+.address-group {
+    flex: 2; /* 주소 입력 폼이 더 넓게 */
+}
+
+.date-group {
+    padding-top: 0px;
+    gap: 5px;
+    flex: 2; /* 예약 날짜 입력 폼이 더 좁게 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input[type="text"], select, button.address_search {
     width: 100%;
     padding: 10px;
-    margin: 8px 0 15px 0;
+    margin: 8px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #005807;
+button.address_search {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #000;
     color: white;
     border: none;
     border-radius: 4px;
@@ -40,70 +80,145 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
-    background-color: #000000;
-}
-
-/* 라벨 스타일 */
-label {
-    font-size: 14px;
-    color: #000000;
-    margin-bottom: 5px;
-    display: block;
-}
-
-/* 주소 검색 버튼 */
-button.address_search {
-    padding: 10px;
+button.address_search:hover {
     background-color: #005807;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
     color: white;
     border: none;
     border-radius: 4px;
+    font-size: 20px;
     cursor: pointer;
 }
 
-button.address_search:hover {
-    background-color: #000000;
+input[type="submit"]:hover {
+    background-color: #005807;
 }
 
-/* 예약 날짜 캘린더 */
-#calendar {
-    cursor: pointer;
-}
-
-/* 시간 선택 테이블 */
-#time-selection {
-    margin-top: 20px;
-}
-
-#time-table {
+/* 기사 선택 버튼 */
+#mechanic-select-button {
     width: 100%;
-    border-collapse: collapse;
+    height: 40px;
+    padding: 10px;
+    background-color: #000; /* 기본 배경색 */
+    color: white; /* 텍스트 색상 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    font-size: 16px; /* 글자 크기 */
+    cursor: pointer; /* 클릭 가능한 마우스 포인터 */
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
 
-#time-table th, #time-table td {
-    padding: 12px;
+#mechanic-select-button:hover {
+    background-color:#005807; /* 호버 시 배경색 변경 */
+}
+
+#mechanic-select-button.selected {
+    background-color: #95f02d; /* 선택 완료 시 초록색 */
+    color: black; /* 텍스트 색상 변경 */
+    font-weight: bold;
+    cursor: default; /* 선택 완료 후 커서 변경 */
+}
+
+/* 기사 선택 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 70%;
+    max-height: 80vh; /* 최대 높이 */
+    overflow-y: auto; /* 스크롤 추가 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-#time-table th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-
-#time-table td {
-    border: 1px solid #ddd;
-}
-
-#time-table td input {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
     cursor: pointer;
 }
 
-#time-table td input:hover {
-    background-color: #45a049;
+
+/* 기사 선택 카드 컨테이너 */
+.mechanic-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 한 행에 4개의 카드 */
+    grid-auto-rows: auto; /* 행 자동 생성 */
+    gap: 20px; /* 카드 간격 */
+    justify-content: center; /* 카드 중앙 정렬 */
+    width: 100%; /* 컨테이너 너비 */
+    box-sizing: border-box;
+}
+
+
+
+/* 카드 스타일 */
+.card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* 3D 효과 */
+    position: relative;
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* 회전 효과 */
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background-color: #005807;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: rotateY(180deg);
+}
+
+.card.selected {
+    border-color: #000000;
+    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.637);
+    background-color: #ff7300;
 }
