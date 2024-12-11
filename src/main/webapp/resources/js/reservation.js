@@ -55,43 +55,50 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             fetchAvailableTimes(mechanic, dateStr);
         }
+        
     });
 
-    // **4. Fetch Available Times**
-    function fetchAvailableTimes(mechanic, date) {
-        $.ajax({
-            url: "/reservation/available-times",
-            type: "GET",
-            data: { mechanic: mechanic, date: date },
-            success: function (times) {
-               console.log("Available times from server:", times);
-                availableTimes = times.filter(time => !reservedTimes.includes(time)); // 이미 예약된 시간 제외
-                populateTimes(availableTimes);
-            },
-            error: function () {
-                alert("예약 가능한 시간 정보를 가져오는 데 실패했습니다.");
-                availableTimes = [];
-                populateTimes([]);
-            }
-        });
-    }
-
-    // **5. Populate Time Picker**
-    function populateTimes(times) {
-        timePicker.empty(); // 기존 옵션 제거
-        timePicker.append('<option value="" disabled selected>시간을 선택하세요</option>');
-
-        if (times.length === 0) {
-            alert("예약 가능한 시간이 없습니다.");
-            return;
+   function fetchAvailableTimes(mechanic, date) {
+    $.ajax({
+        url: "/reservation/available-times",
+        type: "GET",
+        data: { mechanic: mechanic, date: date },
+        success: function (response) {
+            console.log("Available times from server:", response);
+            availableTimes = response.availableTimes.filter(time => !reservedTimes.includes(time)); // Filter available times
+            reservedTimes = response.reservedTimes; // Update reserved times
+              // 예약된 시간을 제외한 시간만 필터링하여 업데이트
+            updateAvailableTimes(availableTimes, reservedTimes);
+        },
+        error: function () {
+            alert("예약 가능한 시간 정보를 가져오는 데 실패했습니다.");
+            availableTimes = [];
+            reservedTimes = [];
+           updateAvailableTimes([], []);
         }
+    });
+}
 
-        times.forEach(time => {
-            timePicker.append(`<option value="${time}">${time}</option>`);
-        });
+   // **5. Update Time Picker with Available Times**
+function updateAvailableTimes(times, reservedTimes) {
+    timePicker.empty(); // 기존 옵션 제거
+    timePicker.append('<option value="" disabled selected>시간을 선택하세요</option>');
 
+    // 예약된 시간을 제외한 배열 생성
+    const availableTimes = times.filter(time => !reservedTimes.includes(time));
+
+    // 예약 가능한 시간 리스트를 timePicker에 추가
+    availableTimes.forEach(time => {
+        timePicker.append(`<option value="${time}">${time}</option>`);
+    });
+
+    // 예약 가능한 시간이 있을 경우 알림
+    if (availableTimes.length > 0) {
         alert("예약 가능한 시간이 업데이트되었습니다.");
+    } else {
+        alert("예약 가능한 시간이 없습니다.");
     }
+}
 
     // **6. Time Picker Change Event**
     timePicker.on("change", function () {
@@ -110,6 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const mechanic = mechanicSelect.value;
         return mechanic || null;
     }
+    
+   
+    
+    
 
     // **8. Form Submission Validation**
    $("#reservation-form").on("submit", function (e) {
@@ -176,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("예약 시간을 선택하세요.");
         return false;
     }
+ 
 
     // 예약 시간 확인
     const userConfirmed = confirm(`선택된 시간은 ${reservation_time}입니다. 예약 신청을 진행하시겠습니까?`);

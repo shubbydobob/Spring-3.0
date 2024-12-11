@@ -58,6 +58,7 @@
                         <option value="누수">누수</option>
                         <option value="부품 파손">부품 파손</option>
                         <option value="악취 발생">악취 발생</option>
+                        <option value="기타">기타</option>
                     </select>
                     <label for="calendar">예약 날짜</label>
                     <input type="text" id="calendar" name="reservation_date" placeholder="날짜를 선택하세요">

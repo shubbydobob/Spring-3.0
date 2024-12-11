@@ -19,7 +19,7 @@ public interface ReservationMapper {
 	List<ReservationDTO> selectReservation();
     
 
-	List<ReservationDTO> findByReservationDateAndReservationTime(@Param("reservation_date") String reservation_date, @Param("reservation_time") String reservation_time);
+	List<ReservationDTO> findByReservationDateAndReservationTime(@Param("mechanic") String mechanic, @Param("reservation_date") String reservation_date, @Param("reservation_time") String reservation_time);
 
 
 	List<String> getAvailableTimesForMechanic(@Param("mechanic") String mechanic, @Param("date") String date);
@@ -27,7 +27,9 @@ public interface ReservationMapper {
 	
 	List<ReservationDTO> findByReservation(String reservation_date, String reservation_time);
 	
-	  List<ReservationDTO> findReservationByCustomerInfo(ReservationDTO rdto);
+	List<ReservationDTO> findReservationByCustomerInfo(ReservationDTO rdto);
 	  
-	  
+	public List<String> getReservedTimes(@Param("mechanic") String mechanic, @Param("date") String date);  
+	
+	int cancelReservation(int reservation_no);
 }

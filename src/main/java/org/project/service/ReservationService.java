@@ -29,10 +29,10 @@ public class ReservationService {
     }
 
         
-	    public boolean isTimeSlotAvailable(String reservation_date, String reservation_time) {
+	    public boolean isTimeSlotAvailable(String mechanic, String reservation_date, String reservation_time) {
 	       
 	        List<ReservationDTO> existingReservations = 
-	       reservationMapper.findByReservationDateAndReservationTime(reservation_date, reservation_time);
+	       reservationMapper.findByReservationDateAndReservationTime(mechanic, reservation_date, reservation_time);
 	       return existingReservations.isEmpty(); 
 	    }
 	    
@@ -51,6 +51,10 @@ public class ReservationService {
 	
 	    	return reservationMapper.getAvailableTimesForMechanic(mechanic, date);
 	    }
+	    
+	    public List<String> getReservedTimes(String mechanic, String date){
+	    	return reservationMapper.getReservedTimes(mechanic, date);
+	    }
 
 	    
 	  
@@ -62,5 +66,8 @@ public class ReservationService {
 	        return reservationMapper.getReservationByNo(reservation_no);
 	    }
 	   
-		  
+	    public boolean cancelReservation(int reservation_no) {
+	        int result = reservationMapper.cancelReservation(reservation_no);
+	        return result > 0; // Returns true if the deletion was successful
+	    }
 	}

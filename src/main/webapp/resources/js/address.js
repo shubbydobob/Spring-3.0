@@ -13,9 +13,9 @@ function eventHandler() {
 }
 function callPostCodeAPI(target, event) {
     let targetParent = target.parentElement;
-    let address_postcode = targetParent.querySelector('.address_postcode');
-    let address_road = targetParent.querySelector('.address_road');
-    let address_bname = targetParent.querySelector('.address_bname');
+    let address_postcode = targetParent.querySelector('#address_postcode');
+    let address_road = targetParent.querySelector('#address_road');
+    let address_bname = targetParent.querySelector('#address_bname');
 
     new daum.Postcode({
         oncomplete: function (data) {

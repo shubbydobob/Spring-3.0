@@ -73,7 +73,19 @@
             <div>${reservation.reservation_time}</div>
         </div>
            
+           <!-- 예약 취소 버튼 추가 -->
+        <form action="/reservation/reservation_cancel" method="post" onsubmit="return confirmCancel();">
+            <input type="hidden" name="reservation_no" value="${reservation.reservation_no}" />
+            <button type="submit">예약 취소</button>
+        </form>
+           
     </c:forEach>  
+    <button type="button" id="moveToHome-button" class="moveToHome-button" onclick="location.href='/reservation/'">메인으로 가기</button>
 </div>
 </body>
+<script>
+    function confirmCancel() {
+        return confirm("예약을 취소하시겠습니까?");
+    }
+</script>
 </html>
