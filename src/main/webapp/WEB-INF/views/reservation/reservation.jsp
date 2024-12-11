@@ -15,18 +15,18 @@
 </head>
 <body>
 
- <form method="post" action="/reservation/reservation-check" class="reservation-form">
+ <form method="post" id="reservation-form" name="reservation-form" action="/reservation/reservation_check" class="reservation-form">
 
             <h2>예약하기</h2>
             <!-- 1. 성함과 연락처 -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">이름</label>
-                    <input type="text" name="customer_name" id="name" placeholder="이름을 입력하세요">
+                    <input type="text" name="customer_name" id="customer_name" placeholder="이름을 입력하세요">
                 </div>
                 <div class="form-group">
                     <label for="phone">연락처</label>
-                    <input type="text" name="customer_phone" id="phone" placeholder="연락처를 입력하세요">
+                    <input type="text" name="customer_phone" id="customer_phone" placeholder="연락처를 입력하세요">
                 </div>
             </div>
         
@@ -40,7 +40,7 @@
                     <input type="text" id="address_road" name="address_road" placeholder="도로명 주소">
                     <input type="text" id="address_bname" name="address_bname" placeholder="동주소">
                     <input type="text" id="address_detail" name="address_detail" placeholder="상세주소">
-                                    <!-- 기사 선택 모달 -->
+                                    <!-- 기사 선택 모달 -->                  
                  <div class="form-group">
                     <label for="mechanic"></label>
                     <button type="button" id="mechanic-select-button">기사 선택</button>
@@ -52,6 +52,7 @@
                     <!-- 3. A/S 사유와 예약날짜/시간 선택 -->
                     <label for="problem">A/S 사유를 선택해주세요.</label>
                     <select name="problem" id="problem">
+                        <option value="">A/S 사유</option>
                         <option value="냉난방 불량">냉난방 불량</option>
                         <option value="소음 및 진동">소음 및 진동</option>
                         <option value="누수">누수</option>
@@ -61,30 +62,14 @@
                     <label for="calendar">예약 날짜</label>
                     <input type="text" id="calendar" name="reservation_date" placeholder="날짜를 선택하세요">
                     <label for="time-picker">예약 시간</label>
-                    <input type="text" id="time-picker" name="reservation_time" placeholder="시간을 선택하세요">
+                    <select id="time-picker" name="reservation_time">
+                    <option value="" disabled selected>시간을 선택하세요</option>
+                    </select>
                     <div class="selected-time-display">
-                        선택된 시간: <span id="selected-time"></span>
+                        선택된 시간: <span id="selected-time" name="reservation_time"></span>
                     </div>
 
-<div id="time-selection" class="time-selection" style="display: none;">
-            <h3>예약 가능한 시간</h3>
-            <table id="time-table" border="1" class="time-table">
-                <thead>
-                    <tr>
-                        <th>시간</th>
-                        <th>선택</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <input type="hidden" id="selected-time" name="reservation_time">
-
-
-
-
-<select id="mechanic" name="mechanic" style="display:none;">
+            <select id="mechanic" name="mechanic" style="display:none;">
             <option value="">기사 선택</option>
 	        <option value="김자바 수리기사 / 냉난방 불량 전문" >김자바 수리기사 / 냉난방 불량 전문</option>
 	        <option value="오드릴 수리기사 / 냉난방 불량 전문">오드릴 수리기사 / 냉난방 불량 전문</option>
@@ -299,10 +284,12 @@
             <input type="hidden" id="selected-mechanic" name="selected-mechanic">
                 <!-- 제출 버튼 -->
             <div class="form-group">
+            
                 <input type="submit" value="예약 신청하기">
+                <button type="button" id="moveToHome-button" class="moveToHome-button" onclick="location.href='/reservation/'">메인으로 가기</button>
             </div>
         </form>
-
+        
 </body>
 </html>
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.mapper.InquiryMapper">
+
+    <!-- 문의 등록 -->
+    <insert id="insertInquiry" parameterType="org.project.dto.InquiryDTO">
+        INSERT INTO inquiry (inquiry)
+        VALUES (#{inquiry})
+    </insert>
+
+    <!-- 모든 문의 조회 -->
+    <select id="selectAllInquiries" resultType="org.project.dto.InquiryDTO">
+        SELECT inquiry
+        FROM inquiry
+    </select>
+
+   <!--  
+    <select id="selectInquiryById" parameterType="int" resultType="org.project.dto.InquiryDto">
+        SELECT inquiry
+        FROM inquiry
+        WHERE id = #{id}
+    </select>
+
+    문의 삭제
+    <delete id="deleteInquiry" parameterType="int">
+        DELETE FROM inquiry
+        WHERE id = #{id}
+    </delete> -->
+</mapper>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #e9eff3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 400px;
+            background: #f7f9fb;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .message.user {
+            align-self: flex-end;
+            background: #017a91;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .estimation{
+            padding: 15px;
+        }
+        .estimation input,
+        .estimation select{
+            margin: 8px 0px;
+            padding: 4px;
+        }
+        .form-button{
+            background: #223951;
+            color: white;
+            padding: 4px;
+            border-radius: 3px;
+            width: 180px;
+        }
+        .answering{
+            background: #223951;
+            color: white;
+            padding: 4px;
+            border-radius: 3px;
+            width: 123px;
+        }
+        .conductsubmit{
+            background: #223951;
+            color: white;
+            padding: 4px;
+            border-radius: 3px;
+            width: 163px;
+            margin-top: 10px;
+        }
+        .message.bot {
+            align-self: flex-start;
+            background: #ffffff;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .button-container button {
+            background:#223951;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 230px;
+        }
+        .button-container button:hover {
+            background: black;
+        }
+        #review-text{
+            margin: 16px 0px;
+        }

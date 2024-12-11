@@ -1,69 +1,179 @@
  @charset "UTF-8"; 
 
-body {
-    background-image: url(../img/yyyyyyyyyyy.jpg);
-    background-size: cover; /* 화면에 꽉 차게 설정 */
-    background-repeat: no-repeat; /* 반복 방지 */
-    
+/* General Styling */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Lilita+One');
+
+/* Body Styling */
+body,
+html {
+  background-image: linear-gradient(hsl(184, 100%, 82%), #fff9ab);
+  background-attachment: fixed;
+  font-family: 'Lilita One', 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
 }
 
-.page{
-	width: 700px;
-	background-color: white;
-	height: 900px;
-	margin: 30px auto;
-	border-radius: 10px;
-	padding: 20px;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);	
+/* Text Styling */
+h1 {
+  color: #000000;
+  font-size: 2em;
+  margin: 0;
 }
 
-.main {
-	padding-left: 150px;
-	padding-bottom: 20px;
+/* Bubbles Styling */
+.bubble {
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  box-shadow: inset 0 20px 30px rgba(255, 255, 255, 0.4), inset 1em 1em 1em rgba(255, 255, 255, 0.6), 0 1em 2em rgba(0, 0, 0, 0.25);
+}
+.bubble:hover {
+  display: none;
+}
+.b1 {
+  animation: floatup 10s linear infinite, sideways 5s ease-in-out infinite alternate;
+  left: 10%;
+  top: 100%;
+}
+.b2 {
+  animation: floatup 5s linear infinite, sideways 4s ease-in-out 1s infinite alternate;
+  left: 15%;
+  top: 30%;
+  transform: scale(0.7);
+}
+.b3 {
+  animation: floatup 4s linear infinite, sideways 6s ease-in-out 6s infinite alternate;
+  left: 20%;
+  transform: scale(1.2);
+}
+.b4 {
+  animation: floatup 6s linear infinite, sideways 5s ease-in-out 3s infinite alternate;
+  left: 25%;
+  top: 90%;
+  transform: scale(0.5);
+}
+.b5 {
+  animation: floatup 8s linear infinite, sideways 6s ease-in-out 3s infinite alternate;
+  left: 30%;
+  top: 30%;
+  transform: scale(1.1);
+}
+.b6 {
+  animation: floatup 7s linear infinite, sideways 4s ease-in-out 3.5s infinite alternate;
+  left: 40%;
+  top: 50%;
+  transform: scale(0.7);
+}
+.b7 {
+  animation: floatup 6s linear infinite, sideways 5s ease-in-out 4s infinite alternate;
+  left: 90%;
+  top: 90%;
+  transform: scale(0.6);
 }
 
-
-.form-group, h2{
-	margin: 30px 40px;
+/* Keyframes */
+@keyframes floatup {
+  0% {
+    margin-top: 50%;
+  }
+  100% {
+    margin-top: -50%;
+  }
 }
-#customer_name{
-	width: 300px;
-	height: 30px;
-	border-radius: 3px;
-	border: 1px solid rgb(0, 0, 0);
-	margin: 13px 0px 0px 0px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-#phone{
-	width: 300px;
-	height: 30px;
-	border-radius: 3px;
-	border: 1px solid rgb(0, 0, 0);
-	margin: 13px 0px 0px 0px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@keyframes sideways {
+  0% {
+    margin-left: 0em;
+  }
+  100% {
+    margin-left: 20em;
+  }
 }
 
-.submitit{
-	background-color: rgb(0, 0, 0);
-	border-style: none;
-	border-radius: 3px;
-	margin-left: 38px;
-    width: 310px;
-    height: 41px;
-    padding: 8px;
-    color: white;
-	box-shadow: 0 6px 12px #0000000c;;
-}
-button.address_search:hover {
-    background-color: #ffc107;
-}
-.submitit:hover {
-    background-color: #ffc107;
+/* Reservation Form Styling */
+/* Form Styling */
+form {
+  padding: 20px;
+  width: 360px;
+  margin: 0 auto;
+  margin-top: 200px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-
-body {
-    background-color: #0000000c;
+.segment {
+  padding: 24px 0;
+  font-size: 1.5em;
+  color: #000000;
+  font-weight: bold;
 }
 
+/* Input and Button Styling */
+input,
+button {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Input Field */
+input {
+  background-color: #F9FAFB;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+input:focus {
+  background-color: #FFFFFF;
+  border: 1px solid #474747;
+  box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+/* Button */
+button {
+  background-color: #0056D2;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+  background-color: hsla(0, 0%, 0%, 0.219);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  background-color: hsla(0, 0%, 0%, 0.219);
+  box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+button.red {
+  background-color: hsla(0, 0%, 0%, 0.219);
+  color: #FFFFFF;
+}
+
+button.red:hover {
+  background-color: #000000;
+}
+
+button.red:active {
+  background-color: #8F2C1A;
+}
 

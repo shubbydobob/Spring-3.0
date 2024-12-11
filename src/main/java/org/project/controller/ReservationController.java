@@ -8,6 +8,7 @@ import org.project.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +35,7 @@ public class ReservationController {
 	    public String showReservationPage() {
 	        return "reservation/reservation"; 
 	    } 
+	 
 	 @PostMapping("/reservation_info_check")
 	public String getReservationByCustomerInfo(ReservationDTO rdto, Model model){
 		System.out.println(rdto);
@@ -90,7 +92,7 @@ public class ReservationController {
 public ResponseEntity getAvailableTimesForMechanic(@RequestParam String mechanic, @RequestParam String date) {
 	  List<String> availableTimesForMechanic = reservationService.getAvailableTimesForMechanic(mechanic, date);
    // Call the service to get available times for the given date
-	  System.out.println("Available times for mechanic " + mechanic + " on " + date + ": " + availableTimesForMechanic);
+	  System.out.println("Available times for mechanic : " + mechanic + " on " + date + ": " + availableTimesForMechanic);
 	  System.out.println("aaaaaa");
    return ResponseEntity.ok(availableTimesForMechanic);
 }
@@ -98,21 +100,24 @@ public ResponseEntity getAvailableTimesForMechanic(@RequestParam String mechanic
 
    
 @PostMapping("/reservation_check")
-public String makeReservation(ReservationDTO reservation, RedirectAttributes redirectAttributes) {
+public String makeReservation(@ModelAttribute ReservationDTO reservationDTO, RedirectAttributes redirectAttributes) {
 	  
 	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    String formattedDate = dateFormat.format(reservation.getReservation_date());
-	  boolean isAvailable = reservationService.isTimeSlotAvailable(formattedDate, reservation.getReservation_time());
+	    String formattedDate = dateFormat.format(reservationDTO.getReservation_date());
+	  boolean isAvailable = reservationService.isTimeSlotAvailable(formattedDate, reservationDTO.getReservation_time());
    
    if (!isAvailable) {
        redirectAttributes.addFlashAttribute("errorMessage", "예약에 실패했습니다.");
+       System.out.println("aaaaaaa");
+       System.out.println("예약 실패 : " + reservationDTO);
        return "redirect:/reservation/reservation"; 
    }    
 	  
-	  reservationService.saveReservation(reservation);
-
-       redirectAttributes.addFlashAttribute("successMessage", "예약 되었습니다!");
-       redirectAttributes.addFlashAttribute("reservation", reservation);
+	  reservationService.saveReservation(reservationDTO);
+       System.out.println("aaaaaaa");
+       System.out.println("예약 성공 : " + reservationDTO);
+       redirectAttributes.addFlashAttribute("successMessage", "예약이 완료되었습니다!");
+       redirectAttributes.addFlashAttribute("reservation", reservationDTO);
       
        return "redirect:/reservation/reservation_check";
    }
