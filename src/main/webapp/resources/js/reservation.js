@@ -119,8 +119,6 @@ function updateAvailableTimes(times, reservedTimes) {
     }
     
    
-    
-    
 
     // **8. Form Submission Validation**
    $("#reservation-form").on("submit", function (e) {
@@ -173,7 +171,7 @@ function updateAvailableTimes(times, reservedTimes) {
     if (errorMessage) {
         alert("올바른 정보를 입력해주세요:\n\n" + errorMessage);
         // 폼 초기화
-        document.getElementById('reservation-form').reset();
+        
         return false;  // 유효성 검사 실패 시 폼 제출 막기
     }
 
@@ -187,6 +185,9 @@ function updateAvailableTimes(times, reservedTimes) {
         alert("예약 시간을 선택하세요.");
         return false;
     }
+ 
+ 
+ 
  
 
     // 예약 시간 확인

@@ -150,6 +150,7 @@ public ModelAndView cancelReservation(@RequestParam("reservation_no") int reserv
     ModelAndView modelAndView = new ModelAndView("redirect:/reservation/reservation");
     if (isCanceled) {
         modelAndView.addObject("successMessage", "예약이 성공적으로 취소되었습니다.");
+        System.out.println("예약 삭제 : " + modelAndView);
     } else {
         modelAndView.addObject("errorMessage", "예약 취소에 실패하였습니다.");
     }

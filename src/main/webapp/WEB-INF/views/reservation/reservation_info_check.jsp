@@ -19,14 +19,17 @@
   <div class="bubble b6"></div>
   <div class="bubble b7"></div>
 
-    <form action="/reservation/reservation_info_check" id="reservationForm" method="post">
+<div class="container">
+    <!-- 예약 조회 폼 -->
+    <div class="reservation-form">
+    <form action="/reservation/reservation_info_check" id="reservationForm" method="post" onsubmit="showReservationHistory()">
      <div class="segment">
       <h1>예약 조회</h1>
     </div>
     
 	        <label for="name">성함</label><br>
 	        <input type="text" name="customer_name" id="customer_name" placeholder="이름을 입력하세요" required>
-	    </div>
+	   
 		<div class="form-group">
 		    <label for="phone">전화번호</label><br>
 		    <input type="text" name="customer_phone" id="customer_phone" placeholder="'-' 빼고 입력해주세요." required>
@@ -36,66 +39,21 @@
  </div>
 
     
-		<!-- 예약 이력 표시 -->
-   <div class="form-group">
-
-   
-   
-    
+	 <!-- 예약 이력 표시 (Initially hidden) -->
+<div id="reservationHistory" class="reservation-history">
     <c:if test="${not empty successMessage}">
         <div>${successMessage}</div>
-    </c:if> -
-    
-    <h3>예약 이력</h3>
-    
+    </c:if> 
      <c:forEach var="reservation" items="${reservations}"> 
+     <div class="reservation-item">
+     <h3>예약 이력</h3>
         <div>
             <label>예약 번호</label>
              <a href="/reservation/reservation_info?reservation_no=${reservation.reservation_no}">
            <c:out value="${reservation.reservation_no}" />
             </a>
         </div>
-        <!--  
-        <div>
-            <label>이름</label>
-            <div>${reservation.customer_name}</div>
-        </div>
-        
-        <div>
-            <label>전화번호</label>
-            <div>${reservation.customer_phone}</div>
-        </div>
-        
-        <div>
-            <label>우편번호</label>
-            <div>${reservation.address_postcode}</div>
-        </div>
-        
-        <div>
-            <label>도로명 주소</label>
-            <div>${reservation.address_road}</div>
-        </div>
-        
-        <div>
-            <label>동주소</label>
-            <div>${reservation.address_bname}</div>
-        </div>
-        
-        <div>
-            <label>상세주소</label>
-            <div>${reservation.address_detail}</div>
-        </div>
-        
-        <div>
-            <label>A/S 사유</label>
-            <div>${reservation.problem}</div>
-        </div>
-        
-        <div>
-            <label>배정된 A/S 기사</label>
-            <div>${reservation.mechanic}</div>
-        </div>
-        -->
+    
         <div>
             <label>방문 예정 날짜</label>
             <div><fmt:formatDate pattern="yyy-MM-dd" value="${reservation.reservation_date}" /></div>
@@ -105,9 +63,10 @@
             <label>방문 예정 시간</label>
             <div><c:out value="${reservation.reservation_time}" /></div>
         </div>
-           
+       </div>    
     </c:forEach>   
-
     </div>
+     </div>
 </body>
+
 </html>

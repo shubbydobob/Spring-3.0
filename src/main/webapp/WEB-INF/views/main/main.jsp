@@ -10,10 +10,12 @@
 </head>
 <body>
    <main>
+   <!-- 
       <div class="background">
         <div class="background-border-horizontal"></div>
         <div class="background-border-vertical"></div>
       </div>
+       -->
       <header>
         <span>.Real Time-Book</span>
       <nav>

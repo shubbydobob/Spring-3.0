@@ -22,11 +22,13 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">이름</label>
-                    <input type="text" name="customer_name" id="customer_name" placeholder="이름을 입력하세요">
+                    <input type="text" name="customer_name" id="customer_name" placeholder="이름을 입력하세요" required oninput="removeDash()">
+                    <small id="nameHelp" style="color:red; display:none;">올바르게 입력해주세요.</small>
                 </div>
                 <div class="form-group">
                     <label for="phone">연락처</label>
-                    <input type="text" name="customer_phone" id="customer_phone" placeholder="연락처를 입력하세요">
+                    <input type="text" name="customer_phone" id="customer_phone" placeholder="'-' 빼고 입력해주세요." required oninput="removeDash()">
+                    <small id="phoneHelp" style="color:red; display:none;">전화번호에서 '-'를 빼주세요.</small>
                 </div>
             </div>
         
@@ -292,6 +294,88 @@
         </form>
         
 </body>
+<script type="text/javascript">
+function removeDash() {
+	var nameInput = document.getElementById("customer_name");
+	var nameValue = nameInput.value;
+    var phoneInput = document.getElementById("customer_phone");
+    var phoneValue = phoneInput.value;
+
+    // 자음만 포함된 이름을 찾는 정규식
+    const consonantOnlyRegex = /^[ㄱ-ㅎ]{2,20}$/; // 자음만 입력된 경우
+    // '-' 제거
+    phoneInput.value = phoneValue.replace(/-/g, '');
+
+ // '-'를 입력하면 경고 메시지를 표시
+    if (consonantOnlyRegex.test(nameValue)) {
+        document.getElementById("nameHelp").style.display = "block";
+    } else {
+        document.getElementById("nameHelp").style.display = "none";
+    }
+    
+    // '-'를 입력하면 경고 메시지를 표시
+    if (phoneValue.includes('-')) {
+        document.getElementById("phoneHelp").style.display = "block";
+    } else {
+        document.getElementById("phoneHelp").style.display = "none";
+    }
+}
+
+// 기사 목록을 A/S 사유별로 정의
+const mechanicOptions = {
+    "냉난방 불량": [
+        "김자바 수리기사 / 냉난방 불량 전문",
+        "오드릴 수리기사 / 냉난방 불량 전문",
+        
+    ],
+    "소음 및 진동": [
+        "정코딩 수리기사 / 소음 및 진동 전문",
+        "한조희 수리기사 / 소음 및 진동 전문"
+    ],
+    "누수": [
+        "박수리 수리기사 / 누수 전문",
+        "정리왕 수리기사 / 누수 전문",
+        "박커피 수리기사 / 누수 전문"
+    ],
+    "부품 파손": [
+        "이냉방 수리기사 / 부품 파손 전문",
+        "김처리 수리기사 / 부품 파손 전문"
+    ],
+    "악취 발생": [
+        "안스프링 수리기사 / 악취 발생 전문",
+        "최코딩 수리기사 / 악취 발생 전문",
+        "최고다 수리기사 / 악취 발생 전문"
+    ],
+    "기타": [
+        "황빠름 수리기사 / 기타",
+        "최파이썬 수리기사 / 기타",
+        "김난방 수리기사 / 기타"
+    ]
+};
+
+// A/S 사유가 선택될 때마다 기사를 필터링하여 모달에 표시
+function filterMechanics() {
+    const problemSelect = document.getElementById("problem");
+    const mechanicSelect = document.getElementById("mechanic");
+    const selectedProblem = problemSelect.value;
+
+    // 기사 select 박스를 비우기
+    mechanicSelect.innerHTML = "<option value=''>기사 선택</option>";
+
+    // 선택된 A/S 사유에 맞는 기사들만 추가
+    if (selectedProblem && mechanicOptions[selectedProblem]) {
+        mechanicOptions[selectedProblem].forEach(mechanic => {
+            const option = document.createElement("option");
+            option.value = mechanic;
+            option.textContent = mechanic;
+            mechanicSelect.appendChild(option);
+        });
+    }
+
+    // 기사 선택 모달 보이기
+    mechanicSelect.style.display = selectedProblem ? "block" : "none";
+}
+</script>
 </html>
 
 

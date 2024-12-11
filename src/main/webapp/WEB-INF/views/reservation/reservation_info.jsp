@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/reservation_info.css">
 </head>
 <body>
 
+    <div class="container">
   
   <div class="form-group">
    
@@ -76,10 +78,12 @@
            <!-- 예약 취소 버튼 추가 -->
         <form action="/reservation/reservation_cancel" method="post" onsubmit="return confirmCancel();">
             <input type="hidden" name="reservation_no" value="${reservation.reservation_no}" />
-            <button type="submit">예약 취소</button>
+            <button type="submit" id="cancelBtn">예약 취소</button>
         </form>
            
     </c:forEach>  
+    </div>
+    
     <button type="button" id="moveToHome-button" class="moveToHome-button" onclick="location.href='/reservation/'">메인으로 가기</button>
 </div>
 </body>

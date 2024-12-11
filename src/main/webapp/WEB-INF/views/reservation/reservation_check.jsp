@@ -37,10 +37,12 @@
 
     <div class="reservations">
         <c:forEach var="reservation" items="${reservations}">
+        <!--  
             <div class="reservation-item">
                 <div class="title">예약 번호</div>
                 <div class="content">${reservation.reservation_no}</div>
             </div>
+            -->
             <div class="reservation-item">
                 <div class="title">고객 이름</div>
                 <div class="content">${reservation.customer_name}</div>
@@ -50,20 +52,11 @@
                 <div class="content">${reservation.customer_phone}</div>
             </div>
             <div class="reservation-item">
-                <div class="title">우편번호</div>
-                <div class="content">${reservation.address_postcode}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">주소 (도로명)</div>
-                <div class="content">${reservation.address_road}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">주소 (주소)</div>
-                <div class="content">${reservation.address_bname}</div>
-            </div>
-            <div class="reservation-item">
-                <div class="title">상세주소</div>
-                <div class="content">${reservation.address_detail}</div>
+                <div class="title">전체 주소</div>
+                <div class="content">${reservation.address_postcode}
+                ${reservation.address_road}
+                ${reservation.address_bname}
+                ${reservation.address_detail}
             </div>
             <div class="reservation-item">
                 <div class="title">A/S 사유</div>
