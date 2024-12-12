@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ChatApiController {
 
-   /*
-    * @PostMapping("/submit-inquiry") public ResponseEntity<String>
-    * submitInquiry(@RequestBody InquiryDto inquiryDto) { // 문의 데이터 처리 로직 //
-    * InquiryService.saveInquiry(inquiryDto); return
-    * ResponseEntity.ok("문의가 성공적으로 제출되었습니다."); }
-    */
+	/*
+	 * @PostMapping("/submit-inquiry") public ResponseEntity<String>
+	 * submitInquiry(@RequestBody InquiryDto inquiryDto) { // 문의 데이터 처리 로직 //
+	 * InquiryService.saveInquiry(inquiryDto); return
+	 * ResponseEntity.ok("문의가 성공적으로 제출되었습니다."); }
+	 */
 
     @PostMapping("/submit-review")
     public ResponseEntity<String> submitReview(@RequestBody ReviewDTO reviewDTO) {

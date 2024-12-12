@@ -74,21 +74,21 @@
 
             <select id="mechanic" name="mechanic" style="display:none;">
             <option value="">기사 선택</option>
-	        <option value="김자바 수리기사 / 냉난방 불량 전문" >김자바 수리기사 / 냉난방 불량 전문</option>
-	        <option value="오드릴 수리기사 / 냉난방 불량 전문">오드릴 수리기사 / 냉난방 불량 전문</option>
-	        <option value="정코딩 수리기사 / 소음 및 진동 전문">정코딩 수리기사 / 소음 및 진동 전문</option>
-	        <option value="한조희 수리기사 / 소음 및 진동 전문">한조희 수리기사 / 소음 및 진동 전문</option>
-	        <option value="박수리 수리기사 / 누수 전문">박수리 수리기사 / 누수 전문</option>
-	        <option value="정리왕 수리기사 / 누수 전문">정리왕 수리기사 / 누수 전문</option>
-	        <option value="박커피 수리기사 / 누수 전문">박커피 수리기사 / 누수 전문</option>
-	        <option value="이냉방 수리기사 / 부품 파손 전문">이냉방 수리기사 / 부품 파손 전문</option>
-	        <option value="김처리 수리기사 / 부품 파손 전문">김처리 수리기사 / 부품 파손 전문</option>
-	        <option value="안스프링 수리기사 / 악취 발생 전문">안스프링 수리기사 / 악취 발생 전문</option>
-	        <option value="최코딩 수리기사 / 악취 발생 전문">최코딩 수리기사 / 악취 발생 전문</option>
-	        <option value="최고다 수리기사 / 악취 발생 전문">최고다 수리기사 / 악취 발생 전문</option>
-	        <option value="황빠름 수리기사 / 기타">황빠름 수리기사 / 기타</option>
-	        <option value="최파이썬 수리기사 / 기타">최파이썬 수리기사 / 기타</option>
-	        <option value="김난방 수리기사 / 기타">김난방 수리기사 / 기타</option>
+	        <option value="김자바" >김자바 수리기사 / 냉난방 불량 전문</option>
+	        <option value="오드릴">오드릴 수리기사 / 냉난방 불량 전문</option>
+	        <option value="정코딩">정코딩 수리기사 / 소음 및 진동 전문</option>
+	        <option value="한조희">한조희 수리기사 / 소음 및 진동 전문</option>
+	        <option value="박수리">박수리 수리기사 / 누수 전문</option>
+	        <option value="정리왕">정리왕 수리기사 / 누수 전문</option>
+	        <option value="박커피">박커피 수리기사 / 누수 전문</option>
+	        <option value="이냉방">이냉방 수리기사 / 부품 파손 전문</option>
+	        <option value="김처리">김처리 수리기사 / 부품 파손 전문</option>
+	        <option value="안스프링">안스프링 수리기사 / 악취 발생 전문</option>
+	        <option value="최코딩">최코딩 수리기사 / 악취 발생 전문</option>
+	        <option value="최고다">최고다 수리기사 / 악취 발생 전문</option>
+	        <option value="황빠름">황빠름 수리기사 / 기타</option>
+	        <option value="최파이썬">최파이썬 수리기사 / 기타</option>
+	        <option value="김난방">김난방 수리기사 / 기타</option>
 </select>
 
                 </div>
@@ -100,7 +100,7 @@
                     <h2>기사님을 선택해주세요</h2>
                     <div class="mechanic-cards">
                         <!-- 기존 카드 -->
-                        <div class="card" data-name="김자바 수리기사 / 냉난방 불량 전문">
+                        <div class="card" data-name="김자바">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/1.jpg" alt="김자바 수리기사">
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="오드릴 수리기사 / 냉난방 불량 전문">
+                        <div class="card" data-name="오드릴">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/2.jpg" alt="오드릴 수리기사">
@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="정코딩 수리기사 / 소음 및 진동 전문">
+                        <div class="card" data-name="정코딩">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/3.jpg" alt="정코딩 수리기사">
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="한조희 수리기사 / 소음 및 진동 전문">
+                        <div class="card" data-name="한조희">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/4.jpg" alt="한조희 수리기사">
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="박수리 수리기사 / 누수 전문">
+                        <div class="card" data-name="박수리">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/5.jpg" alt="박수리 수리기사">
@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="박커피 수리기사 / 누수 전문">
+                        <div class="card" data-name="박커피">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/6.jpg" alt="박커피 수리기사">
@@ -172,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="정리왕 수리기사 / 누수 전문">
+                        <div class="card" data-name="정리왕">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/7.jpg" alt="정리왕 수리기사">
@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" data-name="이냉방 수리기사 / 부품 파손 전문">
+                        <div class="card" data-name="이냉방">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/8.jpg" alt="이냉방 수리기사">
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="card" data-name="김처리 수리기사 / 부품 파손 전문">
+                            <div class="card" data-name="김처리">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/9.jpg" alt="김처리 수리기사">
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
                         </div> 
-                             <div class="card" data-name="최고다 수리기사 / 악취 발생 전문">
+                             <div class="card" data-name="최고다">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/10.jpg" alt="최고다 수리기사">
@@ -220,7 +220,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="card" data-name="안스프링 수리기사 / 악취 발생 전문">
+                         <div class="card" data-name="안스프링">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/11.jpg" alt="안스프링 수리기사">
@@ -232,7 +232,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="card" data-name="12">
+                         <div class="card" data-name="최코딩">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/12.jpg" alt="최코딩 수리기사">
@@ -244,7 +244,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="card" data-name="최파이썬 수리기사 / 기타">
+                         <div class="card" data-name="최파이썬">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/13.jpg" alt="최파이썬 수리기사">
@@ -256,7 +256,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="card" data-name="황빠름 수리기사 / 기타">
+                         <div class="card" data-name="황빠름">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/14.jpg" alt="황빠름 수리기사">
@@ -268,7 +268,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="card" data-name="김난방 수리기사 / 기타">
+                         <div class="card" data-name="김난방">
                             <div class="card-inner">
                                 <div class="card-front">
                                     <img src="/resources/img/15.jpg" alt="김난방 수리기사">
@@ -324,32 +324,32 @@ function removeDash() {
 // 기사 목록을 A/S 사유별로 정의
 const mechanicOptions = {
     "냉난방 불량": [
-        "김자바 수리기사 / 냉난방 불량 전문",
-        "오드릴 수리기사 / 냉난방 불량 전문",
+        "김자바",
+        "오드릴",
         
     ],
     "소음 및 진동": [
-        "정코딩 수리기사 / 소음 및 진동 전문",
-        "한조희 수리기사 / 소음 및 진동 전문"
+        "정코딩",
+        "한조희"
     ],
     "누수": [
-        "박수리 수리기사 / 누수 전문",
-        "정리왕 수리기사 / 누수 전문",
-        "박커피 수리기사 / 누수 전문"
+        "박수리",
+        "정리왕",
+        "박커피"
     ],
     "부품 파손": [
-        "이냉방 수리기사 / 부품 파손 전문",
-        "김처리 수리기사 / 부품 파손 전문"
+        "이냉방",
+        "김처리"
     ],
     "악취 발생": [
-        "안스프링 수리기사 / 악취 발생 전문",
-        "최코딩 수리기사 / 악취 발생 전문",
-        "최고다 수리기사 / 악취 발생 전문"
+        "안스프링",
+        "최코딩",
+        "최고다"
     ],
     "기타": [
-        "황빠름 수리기사 / 기타",
-        "최파이썬 수리기사 / 기타",
-        "김난방 수리기사 / 기타"
+        "황빠름",
+        "최파이썬",
+        "김난방"
     ]
 };
 

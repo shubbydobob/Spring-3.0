@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/chatbot")
+@RequestMapping("chatbot")
 public class ChatBotController {
 
    @GetMapping("/chatbot")
-   public String showChatPage() {
+   public String movechatPage() {
       return "/chatbot/chatbot";
    }
 }

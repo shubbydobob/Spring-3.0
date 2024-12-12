@@ -6,7 +6,7 @@
 /* Body Styling */
 body,
 html {
-  background-image: linear-gradient(hsl(184, 100%, 82%), #fff9ab);
+  background: linear-gradient(60deg, rgb(238, 255, 113) 0%, rgb(233, 147, 255) 80%);
   background-attachment: fixed;
   font-family: 'Lilita One', 'Montserrat', sans-serif;
   margin: 0;

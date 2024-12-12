@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <!--  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +38,12 @@
 		</div>
 		<button type="submit" class="red">예약 조회</button>
     </form>
+ <div class="reservation-item">
+    <h3>최근 예약 이력 - 번호 순서</h3>
+	</div>
  </div>
 
+    
     
 	 <!-- 예약 이력 표시 (Initially hidden) -->
 <div id="reservationHistory" class="reservation-history">
@@ -45,9 +51,13 @@
         <div>${successMessage}</div>
     </c:if> 
      <c:forEach var="reservation" items="${reservations}"> 
+   
+    
+	  
      <div class="reservation-item">
-     <h3>예약 이력</h3>
+   
         <div>
+            <h3>예약 이력</h3>
             <label>예약 번호</label>
              <a href="/reservation/reservation_info?reservation_no=${reservation.reservation_no}">
            <c:out value="${reservation.reservation_no}" />

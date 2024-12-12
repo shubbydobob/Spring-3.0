@@ -24,52 +24,42 @@
             <label>예약 번호</label>
             <div>${reservation.reservation_no}</div>
         </div>
-        
+        <br>
         <div>
             <label>이름</label>
             <div>${reservation.customer_name}</div>
         </div>
-        
+        <br>
         <div>
             <label>전화번호</label>
             <div>${reservation.customer_phone}</div>
         </div>
-        
+        <br>
         <div>
-            <label>우편번호</label>
-            <div>${reservation.address_postcode}</div>
+            <label>방문할 고객 주소</label>
+            <div>${reservation.address_postcode} ${reservation.address_road}<br>
+            ${reservation.address_bname }
+            ${reservation.address_detail}
+            </div>
         </div>
-        
-        <div>
-            <label>도로명 주소</label>
-            <div>${reservation.address_road}</div>
-        </div>
-        
-        <div>
-            <label>동주소</label>
-            <div>${reservation.address_bname}</div>
-        </div>
-        
-        <div>
-            <label>상세주소</label>
-            <div>${reservation.address_detail}</div>
-        </div>
+        <br>
+  
         
         <div>
             <label>A/S 사유</label>
             <div>${reservation.problem}</div>
         </div>
-        
+        <br>
         <div>
             <label>배정된 A/S 기사</label>
             <div>${reservation.mechanic}</div>
         </div>
-        
+        <br>
         <div>
             <label>방문 예정 날짜</label>
             <div>${reservation.reservation_date}</div>
         </div>
-        
+        <br>
         <div>
             <label>방문 예정 시간</label>
             <div>${reservation.reservation_time}</div>

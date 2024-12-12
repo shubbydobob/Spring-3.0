@@ -50,13 +50,13 @@ background-color: #1b2431;
 }
 
 .container::after {
-    background-color: #00ffff;
+    background-color: #ffff00;
     z-index: -1;
     animation: backglow2 15s ease infinite;
 }
 
 .container::before {
-    background-color: #eeff00;
+    background-color: #ff00ff;
     z-index: -2;
     animation: backglow1 15s ease infinite;
 }
@@ -169,7 +169,7 @@ background-color: #1b2431;
     cursor: pointer;
 }
 #cancelBtn:hover {
-    background-color: #005807;
+    background-color: #a8a800;
 }
 
 
@@ -185,5 +185,5 @@ background-color: #1b2431;
     cursor: pointer;
 }
 #moveToHome-button:hover {
-    background-color: #005807;
+    background-color: #c600c0;
 }

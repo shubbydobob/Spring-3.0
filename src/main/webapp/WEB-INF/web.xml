@@ -52,5 +52,13 @@
 <filter-name>encoding</filter-name>
 <servlet-name>appServlet</servlet-name>
 </filter-mapping>
-
+<filter>
+  <filter-name>Set Character Encoding</filter-name>
+  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  <init-param>
+    <param-name>encoding</param-name>
+    <param-value>UTF-8</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</filter>
 </web-app>

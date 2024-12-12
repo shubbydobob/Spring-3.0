@@ -70,4 +70,5 @@ public class ReservationService {
 	        int result = reservationMapper.cancelReservation(reservation_no);
 	        return result > 0; // Returns true if the deletion was successful
 	    }
+	    
 	}
