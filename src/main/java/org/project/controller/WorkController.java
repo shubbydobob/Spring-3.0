@@ -13,10 +13,4 @@ public class WorkController {
 	public String showWorkerCalendarPage(Model model) {
 		return "worker/worker_calendar";
 	}
-	
-	@GetMapping("/worker_history")
-	public String showWorkerHistoryPage() {
-		return "worker/worker_history";
-	}
-	
 }

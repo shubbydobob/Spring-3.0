@@ -85,6 +85,17 @@ function openInputBox(cell, date) {
         <div>
             <label for="input-value">일정 입력:</label>
             <input type="text" id="input-value" placeholder="${date}">
+            <br>
+            <label for="schedule-type">일정 종류:</label>
+            <select id="schedule-type">
+                <option value="repair" style="background-color:#4CAF50;">냉난방 불량</option>
+                <option value="inspection" style="background-color:#2196F3;">소음 및 진동</option>
+                <option value="leak" style="background-color:#FF9800;">누수</option>
+                <option value="breakage" style="background-color:#9C27B0;">부품 파손</option>
+                <option value="stink" style="background-color:#FFC107;">악취 발생</option>
+                <option value="etc" style="background-color:#03A9F4;">기타</option>
+            </select>
+            <br>
             <button id="submit-input">확인</button>
             <button id="cancel-input">취소</button>
         </div>
@@ -102,6 +113,9 @@ function openInputBox(cell, date) {
     // 확인 버튼 클릭 이벤트
     document.getElementById('submit-input').addEventListener('click', function () {
         const inputValue = document.getElementById('input-value').value;
+        const selectedType = document.getElementById('schedule-type').value; // 선택된 일정 종류 가져오기
+        const selectedColor = getColorForScheduleType(selectedType); // 일정 종류에 맞는 색상 가져오기
+
         if (inputValue) {
             const scheduleDiv = cell.querySelector('.schedule');
 
@@ -114,11 +128,12 @@ function openInputBox(cell, date) {
             newSchedule.textContent = inputValue; // 입력값 그대로 표시
             newSchedule.classList.add('schedule-item');
             newSchedule.setAttribute('data-schedule', inputValue); // 실제 데이터를 속성으로 저장
+            newSchedule.style.backgroundColor = selectedColor; // 일정에 선택된 색상 적용
 
             scheduleDiv.appendChild(newSchedule);
 
             // 로컬 저장소에 데이터 저장
-            saveSchedule(date, inputValue);
+            saveSchedule(date, inputValue, selectedType);
 
             document.body.removeChild(inputBox); // 입력 박스 제거
         }
@@ -128,6 +143,26 @@ function openInputBox(cell, date) {
     document.getElementById('cancel-input').addEventListener('click', function () {
         document.body.removeChild(inputBox); // 입력 박스 제거
     });
+}
+
+// 일정 종류에 맞는 색상을 반환하는 함수
+function getColorForScheduleType(scheduleType) {
+    switch (scheduleType) {
+        case 'repair':
+            return '#4CAF50'; // 
+        case 'inspection':
+            return '#2196F3'; // 
+        case 'leak':
+            return '#FF9800'; // 
+        case 'breakage':
+            return '#9C27B0'; // 
+        case 'stink':
+            return '#FFC107'; // 
+        case 'etc':
+            return '#03A9F4'; // 
+        default:
+            return '#FFFFFF'; // 기본 색상
+    }
 }
 
 // 일정 삭제 함수
@@ -150,13 +185,6 @@ function deleteSchedule(date, scheduleText, scheduleDiv) {
     scheduleDiv.remove();
 }
 
-// 일정에 삭제 버튼 추가
-function addScheduleElement(scheduleDiv, date, scheduleText) {
-    // 일정 내용은 입력값 그대로 표시
-    scheduleDiv.textContent = scheduleText;
-    scheduleDiv.setAttribute('data-schedule', scheduleText);
-}
-
 // 로컬 저장소에서 데이터 불러오기
 function loadSchedules() {
     const schedules = JSON.parse(localStorage.getItem('schedules')) || {};
@@ -168,16 +196,40 @@ function loadSchedules() {
                 const newSchedule = document.createElement('div');
                 newSchedule.classList.add('schedule-item');
 
-                // 삭제 버튼 포함한 일정 추가
-                addScheduleElement(newSchedule, date, scheduleText);
+                // 일정 색상 적용 (분야에 따른 색상 지정)
+                if (scheduleText.includes('냉난방 불량')) {
+                    newSchedule.style.backgroundColor = '#4CAF50'; // 초록색
+                } else if (scheduleText.includes('소음 및 진동')) {
+                    newSchedule.style.backgroundColor = '#2196F3'; // 파란색
+                } else if (scheduleText.includes('누수')) {
+                    newSchedule.style.backgroundColor = '#FF9800'; // 주황색
+                } else if (scheduleText.includes('부품 파손')) {
+                    newSchedule.style.backgroundColor = '#9C27B0'; // 보라색
+                } else if (scheduleText.includes('악취 발생')) {
+                    newSchedule.style.backgroundColor = '#FFC107'; // 노란색
+                } else if (scheduleText.includes('기타')) {
+                    newSchedule.style.backgroundColor = '#03A9F4'; // 하늘색
+                }
+                 else {
+                    newSchedule.style.backgroundColor = '#FFFFFF'; // 흰색
+                }
+
+                // addScheduleElement 함수 정의 위치
+                addScheduleElement(newSchedule, date, scheduleText); // 여기서 오류가 발생
                 scheduleDiv.appendChild(newSchedule);
             });
         }
     }
 }
 
+// addScheduleElement 함수 정의
+function addScheduleElement(scheduleDiv, date, scheduleText) {
+    scheduleDiv.textContent = scheduleText;
+    scheduleDiv.setAttribute('data-schedule', scheduleText);
+}
+
 // 로컬 저장소에 데이터 저장
-function saveSchedule(date, schedule) {
+function saveSchedule(date, schedule, type) {
     let schedules = JSON.parse(localStorage.getItem('schedules')) || {};
     if (!schedules[date]) {
         schedules[date] = [];

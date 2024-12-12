@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.mapper.MechanicSignupMapper">
+
+<insert id="insertMechanicSignup" parameterType="org.project.dto.MechanicSignupDto">
+    INSERT INTO mechanic_signup (mechanic_id, mechanic_pw, name, phone_number)
+    VALUES (#{mechanicId}, #{mechanicPw}, #{name}, #{phoneNumber})
+</insert>
+
+<select id="selectAllMechanicSignups" resultType="org.project.dto.MechanicSignupDto">
+    SELECT mechanic_id AS mechanicId, 
+           mechanic_pw AS mechanicPw, 
+           name, 
+           phone_number AS phoneNumber, 
+           created_at AS createdAt
+    FROM mechanic_signup
+</select> 
+
+ <select id="selectMechanicByIdAndPassword" parameterType="map" resultType="org.project.dto.MechanicSignupDto">
+        SELECT mechanic_id, mechanic_pw, name, phone_number, created_at
+        FROM mechanic_signup
+        WHERE mechanic_id = #{mechanicId} AND mechanic_pw = #{mechanicPw}
+    </select>
+</mapper>

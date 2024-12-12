@@ -1,29 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- JSTL 라이브러리 추가 -->
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/main_worker.css">
-<script src="/resources/js/main_worker.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예약 확인</title>
+  <link rel="stylesheet" href="/resources/css/main_worker.css">
 </head>
 <body>
- <!-- 헤더 섹션 -->
+  <!-- 헤더 섹션 -->
   <header class="header-nav">
     <nav class="nav-bar">
       <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="home.html" class="nav-link">로그인</a>
-        </li>
-        <li class="nav-item">
-            <a href="home.html" class="nav-link">회원등록</a>
-          </li>
+        <!-- 세션 상태에 따라 로그인/로그아웃 및 환영 메시지 표시 -->
+        <c:choose>
+          <c:when test="${not empty sessionScope.loggedInMechanic}">
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">로그아웃</a>
+            </li>
+            <li class="nav-item">
+              <span class="welcome-message">${sessionScope.loggedInMechanic.name}님 환영합니다!</span>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <li class="nav-item">
+              <a href="/mechaniclogin" class="nav-link">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a href="/login/mechanicsign" class="nav-link">회원등록</a>
+            </li>
+          </c:otherwise>
+        </c:choose>
         <li class="nav-item">
           <a href="/worker/worker_calendar" class="nav-link">기사일정</a>
-        </li>
-        <li class="nav-item">
-          <a href="/worker/worker_history" class="nav-link">수리내역</a>
         </li>
       </ul>
     </nav>
@@ -60,6 +69,6 @@
       </div>
     </div>
   </div>
-  <script src="mg.js"></script>
+  <script src="/resources/js/mechanicpage.js"></script>
 </body>
 </html>

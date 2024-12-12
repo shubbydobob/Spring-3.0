@@ -8,22 +8,22 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-         
-   
+		   
+	
         }
         .chat-container {
-          width: 600px; /* 또는 원하는 너비 */
-          height: 700px; /* 원하는 높이 설정 */
-          border: 1px solid #ccc; /* 테두리로 영역 구분 */
-          overflow-y: overlay; /* 세로 스크롤 활성화 */
-          padding: 10px; /* 내부 여백 */
-          box-sizing: border-box; /* 패딩 포함 */
-          background-color: #d9e2e8; /* 배경 색상 */
-          border-radius: 20px;
-         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-         
-         
-         
+		    width: 600px; /* 또는 원하는 너비 */
+		    height: 700px; /* 원하는 높이 설정 */
+		    border: 1px solid #ccc; /* 테두리로 영역 구분 */
+		    overflow-y: overlay; /* 세로 스크롤 활성화 */
+		    padding: 10px; /* 내부 여백 */
+		    box-sizing: border-box; /* 패딩 포함 */
+		    background-color: #d9e2e8; /* 배경 색상 */
+			 border-radius: 20px;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+			
+			
+			
             
 }
 ::-webkit-scrollbar {
@@ -36,7 +36,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
             margin: 20px 0px;
             margin-right: 230px;
-         text-align:center;
+			text-align:center;
         }
         .message.user {
             align-self: flex-end;
@@ -56,8 +56,8 @@
             padding: 4px;
         }
 #engineer{
-   width: 255px;
-   height: 30px;
+	width: 255px;
+	height: 30px;
 }
         .form-button{
             background: #223951;
@@ -99,20 +99,20 @@
             cursor: pointer;
             font-size: 14px;
             width: 230px;
-         height: 50px;
-         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-         margin: 3px 0px;
+			height: 50px;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+			margin: 3px 0px;
         }
         .button-container button:hover {
             background: black;
         }
         #review-text{
             margin: 16px 0px;
-         width: 250px;
-         height: 100px;
+			width: 250px;
+			height: 100px;
         }
         p.frame {
-         
-          color: gray;
-          margin-bottom: 5px;
-      }
+		   
+		    color: gray;
+		    margin-bottom: 5px;
+		}
