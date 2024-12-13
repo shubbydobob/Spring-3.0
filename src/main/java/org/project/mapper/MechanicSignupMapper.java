@@ -10,5 +10,5 @@ import org.project.dto.MechanicSignupDto;
 public interface MechanicSignupMapper {
     void insertMechanicSignup(MechanicSignupDto mechanicSignupDto);
     List<MechanicSignupDto> selectAllMechanicSignups();
-    MechanicSignupDto selectMechanicByIdAndPassword(@Param("mechanicId") String mechanicId, @Param("mechanicPw") String mechanicPw); // 추가
+    MechanicSignupDto selectMechanicByIdAndPassword(MechanicSignupDto msdto); // 추가
 }

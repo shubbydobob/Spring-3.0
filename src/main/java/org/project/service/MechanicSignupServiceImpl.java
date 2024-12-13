@@ -24,7 +24,8 @@ public class MechanicSignupServiceImpl implements MechanicSignupService {
     }
 
     @Override
-    public MechanicSignupDto findMechanicByIdAndPassword(String mechanicId, String mechanicPw) {
-        return mechanicSignupMapper.selectMechanicByIdAndPassword(mechanicId, mechanicPw); // 매퍼 호출
+    public MechanicSignupDto findMechanicByIdAndPassword(MechanicSignupDto msdto) {
+    	System.out.println("msdto = " + msdto);
+        return mechanicSignupMapper.selectMechanicByIdAndPassword(msdto); // 매퍼 호출
     }
 }

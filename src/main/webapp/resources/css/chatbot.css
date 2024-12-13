@@ -1,7 +1,7 @@
 @charset "UTF-8";
    body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+         	background: linear-gradient(60deg, rgb(238, 255, 113) 0%, rgb(233, 147, 255) 80%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -14,37 +14,45 @@
         .chat-container {
 		    width: 600px; /* 또는 원하는 너비 */
 		    height: 700px; /* 원하는 높이 설정 */
-		    border: 1px solid #ccc; /* 테두리로 영역 구분 */
+		    border: 10px solid #ccc; /* 테두리로 영역 구분 */
+		    border-color: white;
 		    overflow-y: overlay; /* 세로 스크롤 활성화 */
-		    padding: 10px; /* 내부 여백 */
+		    padding: 30px; /* 내부 여백 */
 		    box-sizing: border-box; /* 패딩 포함 */
-		    background-color: #d9e2e8; /* 배경 색상 */
-			 border-radius: 20px;
+		    /*background-color: #d9e2e8; /* 배경 색상 */
+		    background-color: none;
+			border-radius: 20px;
 			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 			
 			
 			
             
 }
+.revieww{
+	margin-top: 5px;
+	background-color: gray;
+	color: white;
+}
 ::-webkit-scrollbar {
     display: none; /* 스크롤바 숨기기 */
 }
         .message {
             background: #ffffff;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-            margin: 20px 0px;
-            margin-right: 230px;
-			text-align:center;
+            margin: 22px 0px;
+            margin-left:7px;
+            margin-right: 240px;
+			text-align:left;
         }
         .message.user {
             align-self: flex-end;
             background: #485658;
             color: white;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-            margin: 10px 0px;
-            margin-left: 400px;
+            margin: 5px 0px;
+            margin-left: 320px;
             
         }
         .estimation{
@@ -91,7 +99,7 @@
             gap: 5px;
         }
         .button-container button {
-            background:#223951;
+            background:black;
             color: white;
             border: none;
             padding: 10px;
@@ -104,7 +112,8 @@
 			margin: 3px 0px;
         }
         .button-container button:hover {
-            background: black;
+            background: white ;
+            color : black;
         }
         #review-text{
             margin: 16px 0px;

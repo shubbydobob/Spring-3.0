@@ -9,15 +9,15 @@
 <body>
 <div class = "container mt-5">
     <h2>수리기사 로그인</h2>
-    <form action="/mechaniclogin" method="post">
+    <form action="/login/mechaniclogin" method="post">
         <table>
             <tr>
                 <th>아이디</th>
-                <td><input class="form-control" type="text" name="username" required></td>
+                <td><input class="form-control" type="text" name="mechanicId" required></td>
             </tr>
             <tr>
                 <th>비밀번호</th>
-                <td><input class="form-control" type="password" name="password" required></td>
+                <td><input class="form-control" type="password" name="mechanicPw" required></td>
             </tr>
         </table>
         <button class="btn btn-primary" type="submit">로그인</button>

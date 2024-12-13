@@ -14,7 +14,7 @@ function addUserMessage1(text) {
     const botMessage = document.createElement('div');
     botMessage.classList.add('message', 'bot');//봇 메시지 css 클래스 추가
     botMessage.innerHTML = `
-    <a href = "/reservation/reservation"> 예약 페이지로 이동 </a>
+    <a href = "/reservation/reservation" style=text-decoration-line:none; color:black;> 예약 페이지로 이동 </a>
     `;
     chatContainer.appendChild(botMessage);
 
@@ -150,10 +150,10 @@ async function submitInquiry() {
 function resetForm() {
     const chatContainer = document.querySelector('.chat-container');
 
-    // 봇 응답: "감사합니다" 메시지 추가
+    // 봇 응답: "감사합니다!!" 메시지 추가
     const botResponse = document.createElement('div');
     botResponse.classList.add('message', 'bot');
-    botResponse.textContent = '감사합니다. 채팅이 종료되었습니다;';
+    botResponse.textContent = '감사합니다. 채팅으로 되돌아가기;';
     chatContainer.appendChild(botResponse);
 
     // 스크롤 자동 내려가기
@@ -173,8 +173,8 @@ function addUserMessage3(text) {
     const eventMessage = document.createElement('div');
     eventMessage.classList.add('message', 'bot');
     eventMessage.innerHTML = `
-        <p>기사님에 대한 리뷰를 작성해주세요!</p>
-        <p>리뷰를 작성해주신 분들 중 추첨을 통해 소정의 기프티콘을 보내드립니다.</p>
+        <p>어서오세요 고객님^^<br>기사님에 대한 리뷰를 작성해주세요!</p>
+        <p>리뷰를 작성해주신 분들 중 추첨을 통해 소정의 기프티콘을 보내드립니다.<br></p>
     `;
     chatContainer.appendChild(eventMessage);
 
@@ -264,7 +264,7 @@ function addUserMessage3(text) {
         // 봇의 응답 추가 (예시)
         const botMessage = document.createElement('div');
         botMessage.classList.add('message', 'bot');
-        botMessage.textContent = '상담사 연결을 시작합니다.';
+        botMessage.textContent = '조금만 기다려줘~서비스 준비중이야';
         chatContainer.appendChild(botMessage);
 
         // 스크롤 자동 내려가기
@@ -346,7 +346,7 @@ function addUserMessage3(text) {
             <option value="정리왕 수리기사 / 누수 전문">정리왕 수리기사 / 누수 전문</option>
             <option value="최고다 수리기사 / 악취 발생 전문">최고다 수리기사 / 악취 발생 전문</option>
         </select>
-        <button onclick="fetchReviews()">리뷰 보기</button>
+        <button class="revieww"  onclick="fetchReviews()">리뷰 보기</button>
     `;
     chatContainer.appendChild(botMessage);
 

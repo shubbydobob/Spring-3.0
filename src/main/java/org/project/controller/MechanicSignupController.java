@@ -40,16 +40,16 @@ public class MechanicSignupController {
     }
 
     // 회원등록 처리
-    @PostMapping("/submit-signup")
+    @PostMapping("/mechanicsign")
     public String handleSignup(@ModelAttribute MechanicSignupDto mechanicSignupDto, Model model) {
         try {
             mechanicSignupService.saveMechanicsignup(mechanicSignupDto);
             model.addAttribute("message", "회원등록이 성공적으로 완료되었습니다.");
-            return "/main/mechanicpage"; // 성공 페이지
+            return "/main/main_worker"; // 성공 페이지
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", "회원등록 실패");
-            return "/main/mechanicpage"; // 실패 페이지
+            return "/main/mechanicsign"; // 실패 페이지
         }
     }
 }

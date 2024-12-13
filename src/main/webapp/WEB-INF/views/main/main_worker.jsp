@@ -24,7 +24,7 @@
           </c:when>
           <c:otherwise>
             <li class="nav-item">
-              <a href="/mechaniclogin" class="nav-link">로그인</a>
+              <a href="/login/mechaniclogin" class="nav-link">로그인</a>
             </li>
             <li class="nav-item">
               <a href="/login/mechanicsign" class="nav-link">회원등록</a>

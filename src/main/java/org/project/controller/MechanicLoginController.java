@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/login")
 public class MechanicLoginController {
 
     @Autowired
@@ -24,9 +26,10 @@ public class MechanicLoginController {
 
     // 로그인 검증
     @PostMapping("/mechaniclogin")
-    public String login(String username, String password, Model model, HttpSession session) {
+    public String login(MechanicSignupDto msdto, Model model, HttpSession session) {
+    	System.out.println("msdto = "+msdto);
         // Service를 통해 로그인 검증
-        MechanicSignupDto mechanic = mechanicSignupService.findMechanicByIdAndPassword(username, password);
+        MechanicSignupDto mechanic = mechanicSignupService.findMechanicByIdAndPassword(msdto);
 
         if (mechanic != null) {
             // 로그인 성공 -> 세션에 사용자 정보 저장

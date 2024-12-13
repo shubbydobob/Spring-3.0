@@ -35,4 +35,9 @@ document.addEventListener(wheelEventName, event => {
     }, 2200);
     animationPlaying = true;
   }
+  
+  
+  
 });
+
+
